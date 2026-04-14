@@ -17,32 +17,30 @@
         .sticky-header { position: sticky; top: 0; z-index: 50; }
         .card-hover:hover { transform: translateY(-5px); transition: all 0.3s; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
         
-        /* Thumbnail mượt mà */
         .thumb-link { transition: all 0.2s; border: 2px solid transparent; }
         .thumb-link:hover { opacity: 0.8; border-color: var(--vt-teal); }
 
-        /* Ép ảnh trong popup to ra */
         .fancybox__content img {
             max-width: 100% !important;
             max-height: 90vh !important;
             object-fit: contain;
         }
 
-        /* --- SỬA ĐỔI HIỆU ỨNG HẾT DIỆN TÍCH --- */
-        /* Chỉ làm mờ phần thông tin văn bản, giữ hình ảnh rõ nét */
+        /* HIỆU ỨNG TÒA NHÀ ĐÃ ĐẦY */
+        /* Chỉ làm mờ phần chữ, KHÔNG làm mờ hình ảnh */
         .building-full .info-content { 
-            opacity: 0.5; 
-            filter: grayscale(0.3);
-            transition: all 0.3s;
+            opacity: 0.6; 
+            filter: grayscale(0.2); 
         }
-        
-        /* Đảm bảo hình ảnh và thumbnails luôn rõ 100% */
+
+        /* Đảm bảo ảnh chính và ảnh nhỏ luôn hiển thị rõ 100% */
         .building-full .main-img-link, 
         .building-full .thumbnails-container { 
             opacity: 1 !important; 
-            filter: none !important; 
+            filter: none !important;
+            pointer-events: auto !important; /* Vẫn cho phép click xem ảnh */
         }
-        
+
         .badge-full { background-color: #6b7280; }
 
         .contact-person {
@@ -122,8 +120,8 @@
                 hinhAnh: [
                     "https://i.ibb.co/wrJbn2gW/z7723237916358-ef7a71b395e8a0263febc0df1f3aaa57.jpg",
                     "https://i.ibb.co/43BLcXK/z7723237924683-925909363d4bf927686a6a40456158d5.jpg",
-                    "https://i.ibb.co/ksrsW34F/z7723244618548-4fd1a695efb6e80c7f97e99e374ec654.jpg"
-                    "https://i.ibb.co/1fg5PNvn/z7723244638152-9e22d8e353ca0c38626747043debe0f6.jpg"
+                    "https://i.ibb.co/ksrsW34F/z7723244618548-4fd1a695efb6e80c7f97e99e374ec654.jpg",
+                    "https://i.ibb.co/1fg5PNvn/z7723244638152-9e22d8e353ca0c38626747043debe0f6.jpg",
                     "https://i.ibb.co/GQWrLBkJ/z7723244655690-93d6b829f6c3aa830e0830dd79bea8e9.jpg"
                 ]
             },
