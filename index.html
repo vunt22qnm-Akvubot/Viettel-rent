@@ -26,6 +26,18 @@
             max-height: 90vh !important;
             object-fit: contain;
         }
+        /* Hiệu ứng cho tòa nhà đã hết diện tích */
+.building-full {
+    opacity: 0.7;
+    filter: grayscale(0.5);
+    pointer-events: none; /* Ngăn click vào ảnh */
+}
+.building-full .contact-buttons {
+    pointer-events: auto; /* Vẫn cho phép click nút liên hệ nếu cần */
+}
+.badge-full {
+    background-color: #6b7280; /* Màu xám */
+}
     </style>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
@@ -88,108 +100,116 @@
 
         const buildings = [
             { 
-                tinh: "Quảng Nam", 
-                ten: "Tòa nhà Viettel Quảng Nam", 
-                diaChi: "Số 121 Hùng Vương, Tam Kỳ, Quảng Nam",
-                trong: "345m2 - Tầng 5",
-                tienIch: "PCCC chuẩn, An ninh 24/7, Bãi đỗ xe rộng",
-                nv: "Nguyễn Văn Ninh",
-                sdt: "0984636158",
-                region: "Trung",
-                hinhAnh: [
-                    "https://i.ibb.co/wrJbn2gW/z7723237916358-ef7a71b395e8a0263febc0df1f3aaa57.jpg",
-                    "https://i.ibb.co/43BLcXK/z7723237924683-925909363d4bf927686a6a40456158d5.jpg",
-                    "https://i.ibb.co/ksrsW34F/z7723244618548-4fd1a695efb6e80c7f97e99e374ec654.jpg",
-                    "https://i.ibb.co/1fg5PNvn/z7723244638152-9e22d8e353ca0c38626747043debe0f6.jpg",
-                    "https://i.ibb.co/GQWrLBkJ/z7723244655690-93d6b829f6c3aa830e0830dd79bea8e9.jpg"
-                ]
-            },
-            { 
-                tinh: "Đà Nẵng", 
-                ten: "Viettel Techhup Building", 
-                diaChi: "View Cầu Trần Thị Lý, Đà Nẵng",
-                trong: "Hết diện tích",
-                tienIch: "View sông Hàn, Điều hòa trung tâm",
-                nv: "Đinh Viết Thủy",
-                sdt: "0376945999",
-                region: "Trung",
-                hinhAnh: ["https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/514507530_10213875815166076_3935736823067271371_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHOvqBm3RalUN02CjMuUccFc9esOKA6b-Fz16w4oDpv4fqaNYLAp4cNAbc-PLJOfsc&_nc_ohc=vmutfOo7M_8Q7kNvwEHmcDj&_nc_oc=Ado85gjFmrZbM9CRqYeVWv_xoxBXocc2WL3ozFgvV5J_oX9e59_ml2NojbNG7au5gk0&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=jtI5lnSJWugHm_72nrb6Ow&_nc_ss=7a3a8&oh=00_Af1XovtRC1Efva8N9h0kVDWp-1dsGSIr16HKkqafQFT4cQ&oe=69E36267"
-                         
-                         ] 
-            },
-            { 
-                tinh: "Thừa Thiên Huế", 
-                ten: "Tòa nhà Viettel Huế", 
-                diaChi: "Số 11 Lý Thường Kiệt, TP Huế",
-                trong: "50m2- Tầng 7",
-                tienIch: "Gần trung tâm hành chính",
-                nv: "Trương Khắc Mai",
-                sdt: "0982008777",
-                region: "Trung",
-                hinhAnh: [
-                    "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/514317304_10213896404360793_8362935317366112487_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeG8bPpvqLQB1ssS550iTWInsu3j4T0QIYSy7ePhPRAhhG-FEU3EgAQ0xxiThOD93pY&_nc_ohc=nyPCLhDvmhAQ7kNvwHHFp8t&_nc_oc=AdpZ8_ZJogaIe-1JZifhngAK80lBEPM4PAd8nUbsFCRnvjuCta50oVbHT5cEO1Q08dU&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=ldkGAVQ7FylwfPHArC5YEQ&_nc_ss=7a3a8&oh=00_Af1wUjGey_a1BUxUQK7_Jo4P308_3ZuMXtnH0C-TzKv5ng&oe=69E386E6"
-                    
-                ]
+                // Dữ liệu tòa nhà (Giữ nguyên các link ảnh chất lượng cao tôi đã trích xuất)
+const buildings = [
+    { 
+        tinh: "Quảng Nam", 
+        ten: "Tòa nhà Viettel Quảng Nam", 
+        diaChi: "Số 121 Hùng Vương, Tam Kỳ, Quảng Nam",
+        trong: "345m2 - Tầng 5",
+        tienIch: "PCCC chuẩn, An ninh 24/7, Bãi đỗ xe rộng",
+        nv: "Nguyễn Văn Ninh",
+        sdt: "0984636158",
+        region: "Trung",
+        hinhAnh: [
+            "https://i.ibb.co/wrJbn2gW/z7723237916358-ef7a71b395e8a0263febc0df1f3aaa57.jpg",
+            "https://i.ibb.co/43BLcXK/z7723237924683-925909363d4bf927686a6a40456158d5.jpg",
+            "https://i.ibb.co/ksrsW34F/z7723244618548-4fd1a695efb6e80c7f97e99e374ec654.jpg",
+            "https://i.ibb.co/1fg5PNvn/z7723244638152-9e22d8e353ca0c38626747043debe0f6.jpg",
+            "https://i.ibb.co/GQWrLBkJ/z7723244655690-93d6b829f6c3aa830e0830dd79bea8e9.jpg"
+        ]
+    },
+    { 
+        tinh: "Đà Nẵng", 
+        ten: "Viettel Complex Đà Nẵng", 
+        diaChi: "Nguyễn Văn Linh, Đà Nẵng",
+        trong: "Hết diện tích", // Từ khóa để kích hoạt trạng thái "Hết"
+        tienIch: "View sông Hàn, Điều hòa trung tâm",
+        nv: "Đinh Viết Thủy",
+        sdt: "0376945999",
+        region: "Trung",
+        hinhAnh: [] 
+    },
+    { 
+        tinh: "Thừa Thiên Huế", 
+        ten: "Tòa nhà Viettel Huế", 
+        diaChi: "Hùng Vương, TP Huế",
+        trong: "50m2 - 200m2",
+        tienIch: "Gần trung tâm hành chính",
+        nv: "Trương Khắc Mai",
+        sdt: "0982008777",
+        region: "Trung",
+        hinhAnh: []
+    }
+];
+
+function renderBuildings(data) {
+    const grid = document.getElementById('building-grid');
+    document.getElementById('count').innerText = data.length;
+
+    grid.innerHTML = data.map((b, index) => {
+        const mainImg = (b.hinhAnh && b.hinhAnh.length > 0) ? b.hinhAnh[0] : 'https://via.placeholder.com/400x300?text=Viettel+Asset';
+        const galleryId = `gallery-${index}`;
+        
+        // KIỂM TRA TRẠNG THÁI TRỐNG
+        const isFull = b.trong.toLowerCase().includes("hết");
+        const statusClass = isFull ? "badge-full" : "bg-vt-red";
+        const cardClass = isFull ? "building-full" : "";
+
+        let thumbnailsHtml = '';
+        if (b.hinhAnh && b.hinhAnh.length > 1) {
+            thumbnailsHtml = `<div class="grid grid-cols-4 gap-2 mt-3 px-6 pb-2">`;
+            for (let i = 1; i < b.hinhAnh.length; i++) {
+                thumbnailsHtml += `
+                    <a href="${b.hinhAnh[i]}" data-fancybox="${galleryId}" class="thumb-link block h-16 rounded overflow-hidden">
+                        <img src="${b.hinhAnh[i]}" alt="Thumbnail" class="w-full h-full object-cover">
+                    </a>`;
             }
-        ];
+            thumbnailsHtml += `</div>`;
+        }
 
-        const defaultImage = 'https://via.placeholder.com/400x300?text=Viettel+Asset';
-
-        function renderBuildings(data) {
-            const grid = document.getElementById('building-grid');
-            document.getElementById('count').innerText = data.length;
-
-            grid.innerHTML = data.map((b, index) => {
-                const mainImg = (b.hinhAnh && b.hinhAnh.length > 0) ? b.hinhAnh[0] : defaultImage;
-                const galleryId = `gallery-${index}`;
-
-                let thumbnailsHtml = '';
-                if (b.hinhAnh && b.hinhAnh.length > 1) {
-                    thumbnailsHtml = `<div class="grid grid-cols-4 gap-2 mt-3 px-6 pb-2">`;
-                    for (let i = 1; i < b.hinhAnh.length; i++) {
-                        thumbnailsHtml += `
-                            <a href="${b.hinhAnh[i]}" data-fancybox="${galleryId}" class="thumb-link block h-16 rounded overflow-hidden">
-                                <img src="${b.hinhAnh[i]}" alt="Thumbnail" class="w-full h-full object-cover">
-                            </a>
-                        `;
-                    }
-                    thumbnailsHtml += `</div>`;
-                }
-
-                return `
-                    <div class="bg-white rounded-2xl shadow-md border overflow-hidden card-hover flex flex-col">
-                        <div class="bg-gray-200 h-64 flex items-center justify-center relative cursor-pointer group">
-                             <span class="absolute top-4 left-4 bg-vt-red text-white text-xs px-3 py-1 rounded-full font-bold uppercase z-10">${b.tinh}</span>
-                             <a href="${mainImg}" data-fancybox="${galleryId}" class="block w-full h-full relative">
-                                <img src="${mainImg}" onerror="this.src='${defaultImage}'" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
-                                    <i class="fa-solid fa-expand text-3xl text-white"></i>
-                                </div>
-                             </a>
+        return `
+            <div class="bg-white rounded-2xl shadow-md border overflow-hidden card-hover flex flex-col ${cardClass}">
+                <div class="bg-gray-200 h-64 flex items-center justify-center relative cursor-pointer group">
+                     <span class="absolute top-4 left-4 ${statusClass} text-white text-xs px-3 py-1 rounded-full font-bold uppercase z-10">
+                        ${isFull ? 'Đã cho thuê' : b.tinh}
+                     </span>
+                     <a href="${mainImg}" data-fancybox="${galleryId}" class="block w-full h-full relative">
+                        <img src="${mainImg}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+                            <i class="fa-solid fa-expand text-3xl text-white"></i>
                         </div>
-                        ${thumbnailsHtml}
-                        <div class="p-6 pt-4 flex-1">
-                            <h3 class="text-xl font-bold mb-2 text-gray-800">${b.ten}</h3>
-                            <p class="text-sm text-gray-500 mb-4"><i class="fa-solid fa-location-dot text-vt-red"></i> ${b.diaChi}</p>
-                            <div class="mb-4 bg-gray-50 p-3 rounded-lg border-l-4 border-vt-teal">
-                                <p class="text-xs text-vt-teal font-bold uppercase">Diện tích trống:</p>
-                                <p class="font-bold text-gray-700">${b.trong}</p>
-                            </div>
-                            <div class="text-sm mb-6">
-                                <p class="font-semibold text-gray-600 mb-1">Tiện ích:</p>
-                                <p class="text-gray-500">${b.tienIch}</p>
-                            </div>
-                            <div class="border-t pt-4 mt-auto">
-                                <div class="grid grid-cols-2 gap-2">
-                                    <a href="tel:${b.sdt}" class="bg-vt-teal text-white text-center py-2 rounded-lg font-bold hover:bg-teal-700 transition"><i class="fa-solid fa-phone"></i> Gọi ngay</a>
-                                    <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-500 text-white text-center py-2 rounded-lg font-bold hover:bg-blue-600 transition"><i class="fa-solid fa-comment"></i> Zalo</a>
-                                </div>
-                            </div>
+                     </a>
+                </div>
+                ${thumbnailsHtml}
+                <div class="p-6 pt-4 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">${b.ten}</h3>
+                    <p class="text-sm text-gray-500 mb-4"><i class="fa-solid fa-location-dot text-vt-red"></i> ${b.diaChi}</p>
+                    
+                    <div class="mb-4 bg-gray-50 p-3 rounded-lg border-l-4 ${isFull ? 'border-gray-400' : 'border-vt-teal'}">
+                        <p class="text-xs ${isFull ? 'text-gray-500' : 'text-vt-teal'} font-bold uppercase">Diện tích trống:</p>
+                        <p class="font-bold text-gray-700">${b.trong}</p>
+                    </div>
+
+                    <div class="text-sm mb-6 flex-1">
+                        <p class="font-semibold text-gray-600 mb-1">Tiện ích:</p>
+                        <p class="text-gray-500">${b.tienIch}</p>
+                    </div>
+
+                    <div class="border-t pt-4 mt-auto contact-buttons">
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="tel:${b.sdt}" class="${isFull ? 'bg-gray-400' : 'bg-vt-teal hover:bg-teal-700'} text-white text-center py-2 rounded-lg font-bold transition">
+                                <i class="fa-solid fa-phone"></i> ${isFull ? 'Liên hệ sau' : 'Gọi ngay'}
+                            </a>
+                            <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-500 text-white text-center py-2 rounded-lg font-bold hover:bg-blue-600 transition">
+                                <i class="fa-solid fa-comment"></i> Zalo
+                            </a>
                         </div>
                     </div>
-                `;
-            }).join('');
-        }
+                </div>
+            </div>`;
+    }).join('');
+}
 
         function filterData() {
             const search = document.getElementById('search').value.toLowerCase();
