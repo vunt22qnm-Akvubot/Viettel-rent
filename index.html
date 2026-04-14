@@ -48,6 +48,27 @@
             border: 1px dashed #cbd5e1;
         }
         .phone-number { letter-spacing: 0.5px; }
+        /* Hiệu ứng tiêu đề nổi bật */
+.hero-title {
+    font-size: 2.5rem; /* Tăng kích thước chữ */
+    font-weight: 900;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #ffffff, #ffdada); /* Tạo hiệu ứng sáng nhẹ */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Đổ bóng tạo độ nổi */
+    letter-spacing: -1px;
+}
+
+.hero-subtitle {
+    background-color: rgba(255, 255, 255, 0.2); /* Tạo khối nền mờ cho dòng phụ */
+    display: inline-block;
+    padding: 4px 15px;
+    border-radius: 99px;
+    margin-top: 10px;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+}
     </style>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
@@ -68,10 +89,21 @@
         </div>
     </header>
 
-    <section class="bg-vt-teal text-white py-12 px-4 text-center">
-        <h2 class="text-3xl font-bold mb-2 uppercase tracking-tight">Hệ Thống Tòa Nhà Viettel Toàn Quốc</h2>
-        <p class="opacity-90">Giải pháp văn phòng chuyên nghiệp cho mọi doanh nghiệp</p>
-    </section>
+   <section class="bg-vt-teal text-white py-16 px-4 text-center shadow-inner relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <i class="fa-solid fa-city text-[200px] absolute -bottom-10 -right-10"></i>
+    </div>
+
+    <div class="relative z-10">
+        <h2 class="hero-title mb-2">
+            Hệ Thống Tòa Nhà Viettel Toàn Quốc
+        </h2>
+        <p class="hero-subtitle">
+            <i class="fa-solid fa-star text-yellow-400 mr-2"></i>
+            Giải pháp văn phòng chuyên nghiệp cho mọi doanh nghiệp
+        </p>
+    </div>
+</section>
 
     <div class="container mx-auto px-4 -mt-8">
         <div class="bg-white p-6 rounded-xl shadow-xl flex flex-wrap gap-4 items-center">
