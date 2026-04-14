@@ -15,8 +15,17 @@
         .border-vt-red { border-color: var(--vt-red); }
         .sticky-header { position: sticky; top: 0; z-index: 50; }
         .card-hover:hover { transform: translateY(-5px); transition: all 0.3s; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        
+        /* Chỉnh thumbnails mượt hơn */
         .thumb-link { transition: all 0.2s; border: 2px solid transparent; }
         .thumb-link:hover { opacity: 0.8; border-color: var(--vt-teal); }
+
+        /* Ép ảnh trong popup to ra */
+        .fancybox__content img {
+            max-width: 100% !important;
+            max-height: 90vh !important;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
@@ -71,8 +80,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
+        // Khởi tạo Fancybox với các tính năng chuyên nghiệp
         Fancybox.bind("[data-fancybox]", {
-            Carousel: { infinite: true }
+            Images: { Panzoom: { maxScale: 3 } },
+            Toolbar: { display: { right: ["zoom", "slideshow", "fullscreen", "close"] } }
         });
 
         const buildings = [
@@ -86,37 +97,36 @@
                 sdt: "0984636158",
                 region: "Trung",
                 hinhAnh: [
-                    "https://i.ibb.co/mFvYnPTq/515958056-10213896404000784-4990939876495599707-n.jpg",
-                    "https://i.ibb.co/szL4hNb/image.png",
-                    "https://i.ibb.co/hJnJtXBv/image.png",
-                    "https://i.ibb.co/pv78MT0P/image.png",
-                    "https://i.ibb.co/F45dMNJW/image.png"
+                    "https://i.ibb.co/wrJbn2gW/z7723237916358-ef7a71b395e8a0263febc0df1f3aaa57.jpg",
+                    "https://i.ibb.co/43BLcXK/z7723237924683-925909363d4bf927686a6a40456158d5.jpg",
+                    "https://i.ibb.co/ksrsW34F/z7723244618548-4fd1a695efb6e80c7f97e99e374ec654.jpg",
+                    "https://i.ibb.co/1fg5PNvn/z7723244638152-9e22d8e353ca0c38626747043debe0f6.jpg",
+                    "https://i.ibb.co/GQWrLBkJ/z7723244655690-93d6b829f6c3aa830e0830dd79bea8e9.jpg"
                 ]
             },
             { 
                 tinh: "Đà Nẵng", 
-                ten: "Viettel Complex Đà Nẵng", 
-                diaChi: "Nguyễn Văn Linh, Đà Nẵng",
+                ten: "Viettel Techhup Building", 
+                diaChi: "View Cầu Trần Thị Lý, Đà Nẵng",
                 trong: "Hết diện tích",
                 tienIch: "View sông Hàn, Điều hòa trung tâm",
                 nv: "Đinh Viết Thủy",
                 sdt: "0376945999",
                 region: "Trung",
-                hinhAnh: [] 
+                hinhAnh: ["https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/514507530_10213875815166076_3935736823067271371_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHOvqBm3RalUN02CjMuUccFc9esOKA6b-Fz16w4oDpv4fqaNYLAp4cNAbc-PLJOfsc&_nc_ohc=vmutfOo7M_8Q7kNvwEHmcDj&_nc_oc=Ado85gjFmrZbM9CRqYeVWv_xoxBXocc2WL3ozFgvV5J_oX9e59_ml2NojbNG7au5gk0&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=jtI5lnSJWugHm_72nrb6Ow&_nc_ss=7a3a8&oh=00_Af1XovtRC1Efva8N9h0kVDWp-1dsGSIr16HKkqafQFT4cQ&oe=69E36267"
+                         
+                         ] 
             },
             { 
                 tinh: "Thừa Thiên Huế", 
                 ten: "Tòa nhà Viettel Huế", 
-                diaChi: "Hùng Vương, TP Huế",
-                trong: "50m2 - 200m2",
+                diaChi: "Số 11 Lý Thường Kiệt, TP Huế",
+                trong: "50m2- Tầng 7",
                 tienIch: "Gần trung tâm hành chính",
                 nv: "Trương Khắc Mai",
                 sdt: "0982008777",
                 region: "Trung",
-                hinhAnh: [
-                    "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/514317304_10213896404360793_8362935317366112487_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=7b2446&oh=00_Af0TtJBpi5EcdtyGpdHlbCrU67zhjVVZDDK9wd2l-KkXyQ&oe=69E386E6",
-                    "https://via.placeholder.com/800x600?text=Hue+Office+View"
-                ]
+                hinhAnh: []
             }
         ];
 
@@ -135,10 +145,7 @@
                     thumbnailsHtml = `<div class="grid grid-cols-4 gap-2 mt-3 px-6 pb-2">`;
                     for (let i = 1; i < b.hinhAnh.length; i++) {
                         thumbnailsHtml += `
-                            <a href="${b.hinhAnh[i]}" 
-                               data-fancybox="${galleryId}" 
-                               data-caption="${b.ten} - Ảnh ${i+1}"
-                               class="thumb-link block h-16 rounded overflow-hidden">
+                            <a href="${b.hinhAnh[i]}" data-fancybox="${galleryId}" class="thumb-link block h-16 rounded overflow-hidden">
                                 <img src="${b.hinhAnh[i]}" alt="Thumbnail" class="w-full h-full object-cover">
                             </a>
                         `;
@@ -148,9 +155,9 @@
 
                 return `
                     <div class="bg-white rounded-2xl shadow-md border overflow-hidden card-hover flex flex-col">
-                        <div class="bg-gray-200 h-48 flex items-center justify-center relative cursor-pointer group">
+                        <div class="bg-gray-200 h-64 flex items-center justify-center relative cursor-pointer group">
                              <span class="absolute top-4 left-4 bg-vt-red text-white text-xs px-3 py-1 rounded-full font-bold uppercase z-10">${b.tinh}</span>
-                             <a href="${mainImg}" data-fancybox="${galleryId}" data-caption="${b.ten} - Ảnh chính" class="block w-full h-full relative">
+                             <a href="${mainImg}" data-fancybox="${galleryId}" class="block w-full h-full relative">
                                 <img src="${mainImg}" onerror="this.src='${defaultImage}'" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
                                     <i class="fa-solid fa-expand text-3xl text-white"></i>
@@ -170,8 +177,6 @@
                                 <p class="text-gray-500">${b.tienIch}</p>
                             </div>
                             <div class="border-t pt-4 mt-auto">
-                                <p class="text-xs text-gray-400 mb-1 uppercase">Phụ trách tòa nhà:</p>
-                                <p class="font-bold text-gray-800 mb-4">${b.nv}</p>
                                 <div class="grid grid-cols-2 gap-2">
                                     <a href="tel:${b.sdt}" class="bg-vt-teal text-white text-center py-2 rounded-lg font-bold hover:bg-teal-700 transition"><i class="fa-solid fa-phone"></i> Gọi ngay</a>
                                     <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-500 text-white text-center py-2 rounded-lg font-bold hover:bg-blue-600 transition"><i class="fa-solid fa-comment"></i> Zalo</a>
