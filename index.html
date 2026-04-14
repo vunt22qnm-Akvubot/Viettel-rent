@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viettel Asset - Cho thuê văn phòng toàn quốc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --vt-red: #e60000; --vt-teal: #008080; }
+        .bg-vt-red { background-color: var(--vt-red); }
+        .text-vt-teal { color: var(--vt-teal); }
+        .border-vt-red { border-color: var(--vt-red); }
+        .sticky-header { position: sticky; top: 0; z-index: 50; }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s; shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+
+    <header class="bg-white shadow-md sticky-header border-b-4 border-vt-red">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Viettel_logo_2021.svg/1200px-Viettel_logo_2021.svg.png" alt="Viettel" class="h-10">
+                <div>
+                    <h1 class="text-xl font-bold text-vt-red uppercase leading-tight">Viettel Asset Management</h1>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold">Quản lý tài sản & Cho thuê văn phòng</p>
+                </div>
+            </div>
+            <div class="hidden lg:block text-right text-sm">
+                <p><i class="fa-solid fa-map-marker-alt text-vt-red"></i> Tầng 2, Tháp A, tòa The Light, Hà Nội</p>
+                <p><i class="fa-solid fa-phone text-vt-red"></i> Hotline: 0985.990.994</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-vt-teal text-white py-12 px-4 text-center">
+        <h2 class="text-3xl font-bold mb-2">Hệ Thống Tòa Nhà Viettel Toàn Quốc</h2>
+        <p class="opacity-90">Tìm diện tích văn phòng phù hợp nhất cho doanh nghiệp của bạn</p>
+    </section>
+
+    <div class="container mx-auto px-4 -mt-8">
+        <div class="bg-white p-6 rounded-xl shadow-xl flex flex-wrap gap-4 items-center">
+            <input type="text" id="search" onkeyup="filterData()" placeholder="Nhập tên tỉnh hoặc tòa nhà..." class="flex-1 min-w-[250px] border-2 border-gray-200 p-3 rounded-lg focus:border-vt-teal outline-none">
+            <select id="region" onchange="filterData()" class="border-2 border-gray-200 p-3 rounded-lg outline-none">
+                <option value="all">Tất cả khu vực</option>
+                <option value="Bac">Miền Bắc</option>
+                <option value="Trung">Miền Trung</option>
+                <option value="Nam">Miền Nam</option>
+            </select>
+            <div class="text-sm font-bold text-gray-600">Tìm thấy: <span id="count" class="text-vt-red text-lg">0</span> tòa nhà</div>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-10">
+        <div id="building-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-10 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">© 2026 Viettel Asset Management - Chuyên nghiệp & Tin cậy</p>
+            <div class="flex justify-center gap-6">
+                <a href="#" class="hover:text-red-500"><i class="fa-brands fa-facebook-f text-2xl"></i></a>
+                <a href="#" class="hover:text-green-500"><i class="fa-brands fa-zalo text-2xl font-bold">Z</i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const buildings = [
+            { 
+                tinh: "Quảng Nam", 
+                ten: "Tòa nhà Viettel Quảng Nam", 
+                diaChi: "Số 121 Phan Bội Châu, Tam Kỳ",
+                trong: "150m2 - 500m2",
+                tienIch: "PCCC chuẩn, An ninh 24/7, Bãi đỗ xe rộng",
+                nv: "Nguyễn Văn Ninh",
+                sdt: "0984636158",
+                region: "Trung"
+            },
+            { 
+                tinh: "Đà Nẵng", 
+                ten: "Viettel Complex Đà Nẵng", 
+                diaChi: "Nguyễn Văn Linh, Đà Nẵng",
+                trong: "Hết diện tích",
+                tienIch: "View sông Hàn, Điều hòa trung tâm",
+                nv: "Đinh Viết Thủy",
+                sdt: "0376945999",
+                region: "Trung"
+            },
+            { 
+                tinh: "Thừa Thiên Huế", 
+                ten: "Tòa nhà Viettel Huế", 
+                diaChi: "Hùng Vương, TP Huế",
+                trong: "50m2 - 200m2",
+                tienIch: "Gần trung tâm hành chính",
+                nv: "Trương Khắc Mai",
+                sdt: "0982008777",
+                region: "Trung"
+            }
+        ];
+
+        function renderBuildings(data) {
+            const grid = document.getElementById('building-grid');
+            document.getElementById('count').innerText = data.length;
+
+            grid.innerHTML = data.map(b => `
+                <div class="bg-white rounded-2xl shadow-md border overflow-hidden card-hover flex flex-col">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center relative">
+                         <span class="absolute top-4 left-4 bg-vt-red text-white text-xs px-3 py-1 rounded-full font-bold uppercase">${b.tinh}</span>
+                         <i class="fa-solid fa-building text-6xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6 flex-1">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">${b.ten}</h3>
+                        <p class="text-sm text-gray-500 mb-4"><i class="fa-solid fa-location-dot"></i> ${b.diaChi}</p>
+                        
+                        <div class="mb-4 bg-gray-50 p-3 rounded-lg border-l-4 border-vt-teal">
+                            <p class="text-xs text-vt-teal font-bold uppercase">Diện tích trống:</p>
+                            <p class="font-bold text-gray-700">${b.trong}</p>
+                        </div>
+
+                        <div class="text-sm mb-6">
+                            <p class="font-semibold text-gray-600 mb-1">Tiện ích:</p>
+                            <p class="text-gray-500">${b.tienIch}</p>
+                        </div>
+
+                        <div class="border-t pt-4">
+                            <p class="text-xs text-gray-400 mb-2 uppercase">Phụ trách tòa nhà:</p>
+                            <p class="font-bold text-gray-700">${b.nv}</p>
+                            <div class="grid grid-cols-2 gap-2 mt-4">
+                                <a href="tel:${b.sdt}" class="bg-vt-teal text-white text-center py-2 rounded-lg font-bold hover:bg-teal-700 transition">
+                                    <i class="fa-solid fa-phone"></i> Gọi ngay
+                                </a>
+                                <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-500 text-white text-center py-2 rounded-lg font-bold hover:bg-blue-600 transition">
+                                    <i class="fa-solid fa-comment"></i> Zalo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterData() {
+            const search = document.getElementById('search').value.toLowerCase();
+            const region = document.getElementById('region').value;
+            const filtered = buildings.filter(b => {
+                return (b.tinh.toLowerCase().includes(search) || b.ten.toLowerCase().includes(search)) &&
+                       (region === 'all' || b.region === region);
+            });
+            renderBuildings(filtered);
+        }
+
+        window.onload = () => renderBuildings(buildings);
+    </script>
+</body>
+</html>
