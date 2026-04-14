@@ -12,7 +12,7 @@
         .text-vt-teal { color: var(--vt-teal); }
         .border-vt-red { border-color: var(--vt-red); }
         .sticky-header { position: sticky; top: 0; z-index: 50; }
-        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s; shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
     </style>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
@@ -61,12 +61,13 @@
             <p class="mb-4">© 2026 Viettel Asset Management - Chuyên nghiệp & Tin cậy</p>
             <div class="flex justify-center gap-6">
                 <a href="#" class="hover:text-red-500"><i class="fa-brands fa-facebook-f text-2xl"></i></a>
-                <a href="#" class="hover:text-green-500"><i class="fa-brands fa-zalo text-2xl font-bold">Z</i></a>
+                <a href="#" class="hover:text-green-500 text-2xl font-bold">Z</a>
             </div>
         </div>
     </footer>
 
     <script>
+        // Lưu ý: Tôi đã đổi tên tất cả thành hinhAnh (chữ A viết hoa) để đồng bộ
         const buildings = [
             { 
                 tinh: "Quảng Nam", 
@@ -76,8 +77,8 @@
                 tienIch: "PCCC chuẩn, An ninh 24/7, Bãi đỗ xe rộng",
                 nv: "Nguyễn Văn Ninh",
                 sdt: "0984636158",
-                region: "Trung"
-                hinhanh: "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/515958056_10213896404000784_4990939876495599707_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_aid=0&_nc_eui2=AeF2RPQCAtIqo5spXXz-VFR9A0w_mtLVHioDTD-a0tUeKohEs8KlELMiVxKlaxMK4jA&_nc_ohc=LJl0dKEvf-EQ7kNvwGPyhtB&_nc_oc=Adqj_cEg5mkTxwsjdO7Mux7MIap1ApvQHwiTruhdcPndJxazRx8SGNhfa-wqZKPOFTE&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=A7w8YU9NXnQVm5LP714LxQ&_nc_ss=7a3a8&oh=00_Af0SfGdG0Sh617ZRQyBC7X1bOpjBP1jlQEV4c0mwuids0A&oe=69E37532"
+                region: "Trung",
+                hinhAnh: "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/515958056_10213896404000784_4990939876495599707_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_aid=0&_nc_eui2=AeF2RPQCAtIqo5spXXz-VFR9A0w_mtLVHioDTD-a0tUeKohEs8KlELMiVxKlaxMK4jA&_nc_ohc=LJl0dKEvf-EQ7kNvwGPyhtB&_nc_oc=Adqj_cEg5mkTxwsjdO7Mux7MIap1ApvQHwiTruhdcPndJxazRx8SGNhfa-wqZKPOFTE&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=A7w8YU9NXnQVm5LP714LxQ&_nc_ss=7a3a8&oh=00_Af0SfGdG0Sh617ZRQyBC7X1bOpjBP1jlQEV4c0mwuids0A&oe=69E37532"
             },
             { 
                 tinh: "Đà Nẵng", 
@@ -87,7 +88,8 @@
                 tienIch: "View sông Hàn, Điều hòa trung tâm",
                 nv: "Đinh Viết Thủy",
                 sdt: "0376945999",
-                region: "Trung"
+                region: "Trung",
+                hinhAnh: "" // Để trống để thử nghiệm ảnh mặc định
             },
             { 
                 tinh: "Thừa Thiên Huế", 
@@ -97,8 +99,8 @@
                 tienIch: "Gần trung tâm hành chính",
                 nv: "Trương Khắc Mai",
                 sdt: "0982008777",
-                region: "Trung"
-                hinhanh: "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/514317304_10213896404360793_8362935317366112487_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeG8bPpvqLQB1ssS550iTWInsu3j4T0QIYSy7ePhPRAhhG-FEU3EgAQ0xxiThOD93pY&_nc_ohc=nyPCLhDvmhAQ7kNvwHHFp8t&_nc_oc=AdpZ8_ZJogaIe-1JZifhngAK80lBEPM4PAd8nUbsFCRnvjuCta50oVbHT5cEO1Q08dU&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=_jBW8lzcYxlu4KdbJxBnlw&_nc_ss=7a3a8&oh=00_Af0TtJBpi5EcdtyGpdHlbCrU67zhjVVZDDK9wd2l-KkXyQ&oe=69E386E6"
+                region: "Trung",
+                hinhAnh: "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/514317304_10213896404360793_8362935317366112487_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeG8bPpvqLQB1ssS550iTWInsu3j4T0QIYSy7ePhPRAhhG-FEU3EgAQ0xxiThOD93pY&_nc_ohc=nyPCLhDvmhAQ7kNvwHHFp8t&_nc_oc=AdpZ8_ZJogaIe-1JZifhngAK80lBEPM4PAd8nUbsFCRnvjuCta50oVbHT5cEO1Q08dU&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=_jBW8lzcYxlu4KdbJxBnlw&_nc_ss=7a3a8&oh=00_Af0TtJBpi5EcdtyGpdHlbCrU67zhjVVZDDK9wd2l-KkXyQ&oe=69E386E6"
             }
         ];
 
@@ -109,11 +111,10 @@
             grid.innerHTML = data.map(b => `
                 <div class="bg-white rounded-2xl shadow-md border overflow-hidden card-hover flex flex-col">
                     <div class="bg-gray-200 h-48 flex items-center justify-center relative">
-                         <span class="absolute top-4 left-4 bg-vt-red text-white text-xs px-3 py-1 rounded-full font-bold uppercase">${b.tinh}</span>
-                         <html
-<img src="${b.hinhAnh || &#39;https://via.placeholder.com/400x300?text=Viettel+Asset&#39;}&quot; 
-alt=&quot;${b.ten}"
-class="w-full h-full object-cover">
+                         <span class="absolute top-4 left-4 bg-vt-red text-white text-xs px-3 py-1 rounded-full font-bold uppercase z-10">${b.tinh}</span>
+                         <img src="${b.hinhAnh ? b.hinhAnh : 'https://via.placeholder.com/400x300?text=Viettel+Asset'}" 
+                              onerror="this.src='https://via.placeholder.com/400x300?text=Viettel+Building'"
+                              class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex-1">
                         <h3 class="text-xl font-bold mb-2 text-gray-800">${b.ten}</h3>
