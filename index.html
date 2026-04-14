@@ -22,13 +22,11 @@
             font-size: 3.5rem;
             font-weight: 900;
             text-transform: uppercase;
-            /* Đổ màu Gradient từ Trắng sang Xám bạc */
             background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.1;
             letter-spacing: -1px;
-            /* Hiệu ứng bóng đổ 5 lớp tạo độ nổi khối đúc 3D cực sâu */
             filter: drop-shadow(0 1px 0 #ccc)
                     drop-shadow(0 2px 0 #c9c9c9)
                     drop-shadow(0 3px 0 #bbb)
@@ -41,15 +39,15 @@
             display: inline-block;
             margin-top: 25px;
             padding: 12px 35px;
-            background: rgba(0, 0, 0, 0.3); /* Nền tối để làm nổi màu vàng */
+            background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(12px);
-            border: 2px solid #ffd700; /* Viền vàng */
+            border: 2px solid #ffd700;
             border-radius: 50px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         .text-gold {
-            color: #ffd700; /* Màu vàng Gold */
+            color: #ffd700;
             font-weight: 800;
             font-size: 1.3rem;
             text-transform: uppercase;
@@ -84,7 +82,7 @@
         </div>
     </header>
 
-   <section class="bg-vt-teal py-24 px-4 text-center relative overflow-hidden shadow-[inset_0_-10px_20px_rgba(0,0,0,0.2)]">
+    <section class="bg-vt-teal py-24 px-4 text-center relative overflow-hidden shadow-[inset_0_-10px_20px_rgba(0,0,0,0.2)]">
         <div class="absolute inset-0 opacity-10 pointer-events-none">
             <i class="fa-solid fa-building text-[300px] absolute -bottom-10 -left-20 rotate-12"></i>
             <i class="fa-solid fa-signal text-[250px] absolute -top-10 -right-20 -rotate-12"></i>
@@ -156,25 +154,25 @@
             },
             { 
                 tinh: "Đà Nẵng", 
-                ten: "Viettel TechHup Building Đà Nẵng", 
-                diaChi: "View cầu Trần Thị Lý , Đà Nẵng",
+                ten: "Viettel TechHub Đà Nẵng", 
+                diaChi: "Lô A1-1, Đường 2/9, Hải Châu, Đà Nẵng",
                 trong: "Hết diện tích", 
-                tienIch: "View sông Hàn, Điều hòa trung tâm Daikin, 04 Thang máy tốc độ cao, Điện dự phòng 100% công suất.",
+                tienIch: "Kiến trúc xanh hiện đại, đạt tiêu chuẩn văn phòng hạng A, View trực diện sông Hàn và cầu Rồng.",
                 nv: "Đinh Viết Thủy",
                 sdt: "0376945999",
                 region: "Trung",
-                hinhAnh: ["https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/514507530_10213875815166076_3935736823067271371_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=13d280&oh=00_Af07_fapuecYEjKGNqrm1eQ5f5VA3gwVbUn7dqRxfFaZHw&oe=69E39AA7"] 
+                hinhAnh: ["https://i.ibb.co/jP8tM7V2/6890869106090432170.jpg"] 
             },
             { 
                 tinh: "Thừa Thiên Huế", 
                 ten: "Tòa nhà Viettel Huế", 
                 diaChi: "Số 11 Lý Thường Kiệt, TP Huế",
                 trong: "50m2 - 200m2",
-                tienIch: "Trung tâm hành chính Huế, Hệ thống camera AI giám sát, Sảnh đón khách sang trọng, Vệ sinh chuyên nghiệp.",
+                tienIch: "Tòa nhà cao tầng trung tâm TP Huế, Sảnh chờ lớn, Hệ thống PCCC thông minh, Bảo vệ chuyên nghiệp.",
                 nv: "Trương Khắc Mai",
                 sdt: "0982008777",
                 region: "Trung",
-                hinhAnh: ["https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/514317304_10213896404360793_8362935317366112487_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=7b2446&oh=00_Af1fcopyEYSl_dURqdVP00DchAhuv8naUdC2-6HJUmApCQ&oe=69E386E6"]
+                hinhAnh: ["https://i.ibb.co/7J6BTrp0/z7723528652684-28b99335a26c623098553655df087d00.jpg"]
             }
         ];
 
@@ -182,7 +180,7 @@
             const grid = document.getElementById('building-grid');
             document.getElementById('count').innerText = data.length;
             grid.innerHTML = data.map((b, index) => {
-                const mainImg = (b.hinhAnh && b.hinhAnh.length > 0) ? b.hinhAnh[0] : 'https://via.placeholder.com/400x300';
+                const mainImg = (b.hinhAnh && b.hinhAnh.length > 0) ? b.hinhAnh[0] : 'https://via.placeholder.com/600x400?text=Viettel+Asset';
                 const galleryId = `gallery-${index}`;
                 const isFull = b.trong.toLowerCase().includes("hết");
 
@@ -193,11 +191,12 @@
                                 ${isFull ? 'Đã cho thuê' : b.tinh}
                              </span>
                              <a href="${mainImg}" data-fancybox="${galleryId}">
-                                <img src="${mainImg}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <img src="${mainImg}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.src='https://via.placeholder.com/600x400?text=Viettel+Asset'">
                                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
                                     <i class="fa-solid fa-eye text-4xl text-white"></i>
                                 </div>
                              </a>
+                             ${b.hinhAnh.slice(1).map(img => `<a href="${img}" data-fancybox="${galleryId}" class="hidden"></a>`).join('')}
                         </div>
 
                         <div class="p-8 flex-1 flex flex-col">
