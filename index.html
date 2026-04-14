@@ -6,6 +6,9 @@
     <title>Viettel Asset - Cho thuê văn phòng toàn quốc</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
     <style>
         :root { --vt-red: #e60000; --vt-teal: #008080; }
         .bg-vt-red { background-color: var(--vt-red); }
@@ -13,6 +16,10 @@
         .border-vt-red { border-color: var(--vt-red); }
         .sticky-header { position: sticky; top: 0; z-index: 50; }
         .card-hover:hover { transform: translateY(-5px); transition: all 0.3s; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        
+        /* Style cho các ảnh nhỏ (thumbnails) trong thư viện */
+        .thumb-link { transition: all 0.2s; }
+        .thumb-link:hover { opacity: 0.8; border-color: var(--vt-teal); }
     </style>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
@@ -66,8 +73,18 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
-        // Lưu ý: Tôi đã đổi tên tất cả thành hinhAnh (chữ A viết hoa) để đồng bộ
+        // Khởi tạo Fancybox cho tất cả các phần tử có thuộc tính data-fancybox
+        Fancybox.bind("[data-fancybox]", {
+            // Cấu hình thêm nếu cần, ví dụ:
+            // Carousel: { infinite: false }
+        });
+    </script>
+
+    <script>
+        // Cập nhật cấu trúc dữ liệu: hinhAnh giờ là một MẢNG chứa các link ảnh
+        // Ảnh đầu tiên trong mảng sẽ làm ảnh đại diện.
         const buildings = [
             { 
                 tinh: "Quảng Nam", 
@@ -78,7 +95,12 @@
                 nv: "Nguyễn Văn Ninh",
                 sdt: "0984636158",
                 region: "Trung",
-                hinhAnh: "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/515958056_10213896404000784_4990939876495599707_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_aid=0&_nc_eui2=AeF2RPQCAtIqo5spXXz-VFR9A0w_mtLVHioDTD-a0tUeKohEs8KlELMiVxKlaxMK4jA&_nc_ohc=LJl0dKEvf-EQ7kNvwGPyhtB&_nc_oc=Adqj_cEg5mkTxwsjdO7Mux7MIap1ApvQHwiTruhdcPndJxazRx8SGNhfa-wqZKPOFTE&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=A7w8YU9NXnQVm5LP714LxQ&_nc_ss=7a3a8&oh=00_Af0SfGdG0Sh617ZRQyBC7X1bOpjBP1jlQEV4c0mwuids0A&oe=69E37532"
+                // Danh sách nhiều ảnh cho Quảng Nam
+                hinhAnh: [
+                    "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/515958056_10213896404000784_4990939876495599707_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_aid=0&_nc_eui2=AeF2RPQCAtIqo5spXXz-VFR9A0w_mtLVHioDTD-a0tUeKohEs8KlELMiVxKlaxMK4jA&_nc_ohc=LJl0dKEvf-EQ7kNvwGPyhtB&_nc_oc=Adqj_cEg5mkTxwsjdO7Mux7MIap1ApvQHwiTruhdcPndJxazRx8SGNhfa-wqZKPOFTE&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=A7w8YU9NXnQVm5LP714LxQ&_nc_ss=7a3a8&oh=00_Af0SfGdG0Sh617ZRQyBC7X1bOpjBP1jlQEV4c0mwuids0A&oe=69E37532",
+                    "https://via.placeholder.com/800x600?text=Mat+Bang+Tang+5", // Ví dụ ảnh mặt bằng
+                    "https://via.placeholder.com/800x600?text=Tien+Ich+Phong+Hopp" // Ví dụ ảnh tiện ích
+                ]
             },
             { 
                 tinh: "Đà Nẵng", 
@@ -89,7 +111,8 @@
                 nv: "Đinh Viết Thủy",
                 sdt: "0376945999",
                 region: "Trung",
-                hinhAnh: "" // Để trống để thử nghiệm ảnh mặc định
+                // Đà Nẵng tạm thời để trống ảnh để test ảnh mặc định
+                hinhAnh: [] 
             },
             { 
                 tinh: "Thừa Thiên Huế", 
@@ -100,51 +123,97 @@
                 nv: "Trương Khắc Mai",
                 sdt: "0982008777",
                 region: "Trung",
-                hinhAnh: "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/514317304_10213896404360793_8362935317366112487_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeG8bPpvqLQB1ssS550iTWInsu3j4T0QIYSy7ePhPRAhhG-FEU3EgAQ0xxiThOD93pY&_nc_ohc=nyPCLhDvmhAQ7kNvwHHFp8t&_nc_oc=AdpZ8_ZJogaIe-1JZifhngAK80lBEPM4PAd8nUbsFCRnvjuCta50oVbHT5cEO1Q08dU&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=_jBW8lzcYxlu4KdbJxBnlw&_nc_ss=7a3a8&oh=00_Af0TtJBpi5EcdtyGpdHlbCrU67zhjVVZDDK9wd2l-KkXyQ&oe=69E386E6"
+                // Huế có 2 ảnh
+                hinhAnh: [
+                    "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/514317304_10213896404360793_8362935317366112487_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeG8bPpvqLQB1ssS550iTWInsu3j4T0QIYSy7ePhPRAhhG-FEU3EgAQ0xxiThOD93pY&_nc_ohc=nyPCLhDvmhAQ7kNvwHHFp8t&_nc_oc=AdpZ8_ZJogaIe-1JZifhngAK80lBEPM4PAd8nUbsFCRnvjuCta50oVbHT5cEO1Q08dU&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=_jBW8lzcYxlu4KdbJxBnlw&_nc_ss=7a3a8&oh=00_Af0TtJBpi5EcdtyGpdHlbCrU67zhjVVZDDK9wd2l-KkXyQ&oe=69E386E6",
+                    "https://via.placeholder.com/800x600?text=Huế+Mặt+Tiền+Đêm"
+                ]
             }
         ];
+
+        // Ảnh mặc định khi tòa nhà không có ảnh nào
+        const defaultImage = 'https://via.placeholder.com/400x300?text=Viettel+Asset';
 
         function renderBuildings(data) {
             const grid = document.getElementById('building-grid');
             document.getElementById('count').innerText = data.length;
 
-            grid.innerHTML = data.map(b => `
-                <div class="bg-white rounded-2xl shadow-md border overflow-hidden card-hover flex flex-col">
-                    <div class="bg-gray-200 h-48 flex items-center justify-center relative">
-                         <span class="absolute top-4 left-4 bg-vt-red text-white text-xs px-3 py-1 rounded-full font-bold uppercase z-10">${b.tinh}</span>
-                         <img src="${b.hinhAnh ? b.hinhAnh : 'https://via.placeholder.com/400x300?text=Viettel+Asset'}" 
-                              onerror="this.src='https://via.placeholder.com/400x300?text=Viettel+Building'"
-                              class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 flex-1">
-                        <h3 class="text-xl font-bold mb-2 text-gray-800">${b.ten}</h3>
-                        <p class="text-sm text-gray-500 mb-4"><i class="fa-solid fa-location-dot"></i> ${b.diaChi}</p>
-                        
-                        <div class="mb-4 bg-gray-50 p-3 rounded-lg border-l-4 border-vt-teal">
-                            <p class="text-xs text-vt-teal font-bold uppercase">Diện tích trống:</p>
-                            <p class="font-bold text-gray-700">${b.trong}</p>
+            grid.innerHTML = data.map((b, index) => {
+                // Xác định ảnh đại diện (ảnh đầu tiên trong mảng, nếu có)
+                const mainImg = (b.hinhAnh && b.hinhAnh.length > 0) ? b.hinhAnh[0] : defaultImage;
+                
+                // Tạo ID gallery duy nhất cho mỗi tòa nhà
+                const galleryId = `gallery-${index}`;
+
+                // Tạo mã HTML cho các ảnh nhỏ (thumbnails)
+                // Chỉ hiển thị từ ảnh thứ 2 trở đi. Nếu không có thêm ảnh, phần này trống.
+                let thumbnailsHtml = '';
+                if (b.hinhAnh && b.hinhAnh.length > 1) {
+                    thumbnailsHtml = `<div class="grid grid-cols-4 gap-2 mt-3 px-6 pb-2">`;
+                    // Bắt đầu từ i=1 (ảnh thứ 2)
+                    for (let i = 1; i < b.hinhAnh.length; i++) {
+                        thumbnailsHtml += `
+                            <a href="${b.hinhAnh[i]}" 
+                               data-fancybox="${galleryId}" 
+                               data-caption="${b.ten} - Ảnh ${i+1}"
+                               class="thumb-link block h-16 rounded border-2 border-transparent overflow-hidden">
+                                <img src="${b.hinhAnh[i]}" alt="Thumbnail" class="w-full h-full object-cover">
+                            </a>
+                        `;
+                    }
+                    thumbnailsHtml += `</div>`;
+                }
+
+                return `
+                    <div class="bg-white rounded-2xl shadow-md border overflow-hidden card-hover flex flex-col">
+                        <div class="bg-gray-200 h-48 flex items-center justify-center relative cursor-pointer group">
+                             <span class="absolute top-4 left-4 bg-vt-red text-white text-xs px-3 py-1 rounded-full font-bold uppercase z-10">${b.tinh}</span>
+                             
+                             <a href="${mainImg}" 
+                                data-fancybox="${galleryId}" 
+                                data-caption="${b.ten} - Ảnh Đại Diện" 
+                                class="block w-full h-full relative">
+                                <img src="${mainImg}" 
+                                     onerror="this.src='${defaultImage}'"
+                                     class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+                                    <i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i>
+                                </div>
+                             </a>
                         </div>
 
-                        <div class="text-sm mb-6">
-                            <p class="font-semibold text-gray-600 mb-1">Tiện ích:</p>
-                            <p class="text-gray-500">${b.tienIch}</p>
-                        </div>
+                        ${thumbnailsHtml}
 
-                        <div class="border-t pt-4">
-                            <p class="text-xs text-gray-400 mb-2 uppercase">Phụ trách tòa nhà:</p>
-                            <p class="font-bold text-gray-700">${b.nv}</p>
-                            <div class="grid grid-cols-2 gap-2 mt-4">
-                                <a href="tel:${b.sdt}" class="bg-vt-teal text-white text-center py-2 rounded-lg font-bold hover:bg-teal-700 transition">
-                                    <i class="fa-solid fa-phone"></i> Gọi ngay
-                                </a>
-                                <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-500 text-white text-center py-2 rounded-lg font-bold hover:bg-blue-600 transition">
-                                    <i class="fa-solid fa-comment"></i> Zalo
-                                </a>
+                        <div class="p-6 pt-4 flex-1">
+                            <h3 class="text-xl font-bold mb-2 text-gray-800">${b.ten}</h3>
+                            <p class="text-sm text-gray-500 mb-4"><i class="fa-solid fa-location-dot"></i> ${b.diaChi}</p>
+                            
+                            <div class="mb-4 bg-gray-50 p-3 rounded-lg border-l-4 border-vt-teal">
+                                <p class="text-xs text-vt-teal font-bold uppercase">Diện tích trống:</p>
+                                <p class="font-bold text-gray-700">${b.trong}</p>
+                            </div>
+
+                            <div class="text-sm mb-6">
+                                <p class="font-semibold text-gray-600 mb-1">Tiện ích:</p>
+                                <p class="text-gray-500">${b.tienIch}</p>
+                            </div>
+
+                            <div class="border-t pt-4">
+                                <p class="text-xs text-gray-400 mb-2 uppercase">Phụ trách tòa nhà:</p>
+                                <p class="font-bold text-gray-700">${b.nv}</p>
+                                <div class="grid grid-cols-2 gap-2 mt-4">
+                                    <a href="tel:${b.sdt}" class="bg-vt-teal text-white text-center py-2 rounded-lg font-bold hover:bg-teal-700 transition">
+                                        <i class="fa-solid fa-phone"></i> Gọi ngay
+                                    </a>
+                                    <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-500 text-white text-center py-2 rounded-lg font-bold hover:bg-blue-600 transition">
+                                        <i class="fa-solid fa-comment"></i> Zalo
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function filterData() {
