@@ -15,78 +15,104 @@
         .text-vt-red { color: var(--vt-red); }
         .sticky-header { position: sticky; top: 0; z-index: 50; }
         
-        /* Cấu hình ảnh bìa làm nền Hero Section */
-        .hero-banner {
-            background: linear-gradient(rgba(180, 0, 0, 0.75), rgba(130, 0, 0, 0.85)), 
-                        url('https://scontent.fdad3-8.fna.fbcdn.net/v/t39.30808-6/649582743_1398880705616948_7586231284508477300_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHImRH-UjHh8rPUrDkbpVCjoU9OKgV4Q6ahT04qBXhDpsbdciNroAmQzGCN-L4qsIs&_nc_ohc=VJJ3qkvyZYAQ7kNvwEc5t4O&_nc_oc=Adqr573iMH5loC7OVDHwh_FSbXHIQvNApHLd9LHg2lS7SMsIDbWJKB9jsjucr1KwBfA&_nc_zt=23&_nc_ht=scontent.fdad3-8.fna&_nc_gid=83oM9S6tYCz-lM2o31LKug&_nc_ss=7a3a8&oh=00_Af2m0daV8EHq9C4SIzcizFnmJ5rPtKn_o2PBePzsOfWmZA&oe=69E4D3F7');
-            background-size: cover;
-            background-position: center;
-            padding: 70px 20px 90px 20px;
+        /* New Premium Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #fdfdfd 0%, #f1f1f1 100%);
+            padding: 40px 0 100px 0;
+            border-bottom: 1px solid #eee;
         }
 
         .hero-title-premium {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 900;
             text-transform: uppercase;
-            color: white;
-            line-height: 1.2;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            color: var(--vt-red);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
         }
 
-        .thumb-img { aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
-        .thumb-img:hover { border-color: var(--vt-red); transform: scale(0.95); }
-        
+        /* Khối ảnh trụ sở nổi bật */
+        .hq-image-card {
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(230, 0, 0, 0.2);
+            border: 4px solid white;
+            transition: transform 0.3s ease;
+        }
+        .hq-image-card:hover { transform: translateY(-10px); }
+
         .search-box-premium {
             background: white;
-            padding: 20px;
+            padding: 24px;
             border-radius: 24px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
-            border: 1px solid #f3f4f6;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
         }
 
         @media (max-width: 768px) {
-            .hero-title-premium { font-size: 1.5rem; }
-            .hero-banner { padding: 50px 15px 80px 15px; }
-            .search-container { margin-top: -3.5rem; }
+            .hero-title-premium { font-size: 1.8rem; text-align: center; }
+            .hero-section { padding: 30px 0 80px 0; }
+            .search-container { margin-top: -4rem; }
         }
     </style>
 </head>
-<body class="bg-gray-100 font-sans text-gray-800">
+<body class="bg-gray-50 font-sans text-gray-800">
 
     <header class="bg-white shadow-sm sticky-header border-b-2 border-vt-red">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Viettel_logo_2021.svg/1200px-Viettel_logo_2021.svg.png" alt="Viettel" class="h-7 md:h-9">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Viettel_logo_2021.svg/1200px-Viettel_logo_2021.svg.png" alt="Viettel" class="h-8 md:h-10">
                 <div class="border-l-2 border-gray-200 pl-2">
                     <h1 class="text-sm md:text-xl font-black text-vt-red uppercase leading-none">Asset</h1>
-                    <p class="text-[8px] text-gray-400 uppercase tracking-tighter">Quản lý tài sản</p>
+                    <p class="text-[8px] text-gray-400 uppercase font-bold tracking-widest">Quản lý tài sản</p>
                 </div>
             </div>
-            <a href="tel:0985990994" class="text-vt-red font-black text-sm md:text-lg bg-red-50 px-3 py-1 rounded-full border border-red-100">
+            <a href="tel:0985990994" class="text-vt-red font-black text-sm md:text-lg bg-red-50 px-4 py-2 rounded-full border border-red-100 transition-all hover:bg-red-600 hover:text-white">
                 <i class="fa-solid fa-phone-volume mr-1"></i> 0985.990.994
             </a>
         </div>
     </header>
 
-    <section class="hero-banner text-center relative overflow-hidden">
-        <div class="relative z-10 max-w-5xl mx-auto">
-            <h2 class="hero-title-premium">HỆ THỐNG TÒA NHÀ <br> VIETTEL TOÀN QUỐC</h2>
-            <div class="mt-4 inline-block bg-white/20 backdrop-blur-md border border-white/30 px-5 py-1.5 rounded-full">
-                <p class="text-white font-bold text-[10px] md:text-xs uppercase tracking-wide">🏠 Giải pháp văn phòng chuyên nghiệp</p>
+    <section class="hero-section">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="w-full md:w-1/2 text-center md:text-left">
+                    <div class="inline-block bg-red-100 text-vt-red text-xs font-black px-4 py-1.5 rounded-full mb-4">
+                        VIETTEL REAL ESTATE
+                    </div>
+                    <h2 class="hero-title-premium">HỆ THỐNG TÒA NHÀ <br> <span class="text-gray-900">VIETTEL TOÀN QUỐC</span></h2>
+                    <p class="text-gray-600 mb-6 text-sm md:text-base leading-relaxed">
+                        Cung cấp không gian làm việc chuyên nghiệp, hạ tầng viễn thông hiện đại cùng dịch vụ quản lý vận hành tiêu chuẩn cao từ Tập đoàn Viettel.
+                    </p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700">
+                            <i class="fa-solid fa-circle-check text-green-500"></i> PCCC chuẩn
+                        </div>
+                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700">
+                            <i class="fa-solid fa-circle-check text-green-500"></i> An ninh 24/7
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2">
+                    <div class="hq-image-card overflow-hidden">
+                        <img src="https://scontent.fdad3-8.fna.fbcdn.net/v/t39.30808-6/649582743_1398880705616948_7586231284508477300_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHImRH-UjHh8rPUrDkbpVCjoU9OKgV4Q6ahT04qBXhDpsbdciNroAmQzGCN-L4qsIs&_nc_ohc=VJJ3qkvyZYAQ7kNvwEc5t4O&_nc_oc=Adqr573iMH5loC7OVDHwh_FSbXHIQvNApHLd9LHg2lS7SMsIDbWJKB9jsjucr1KwBfA&_nc_zt=23&_nc_ht=scontent.fdad3-8.fna&_nc_gid=83oM9S6tYCz-lM2o31LKug&_nc_ss=7a3a8&oh=00_Af2m0daV8EHq9C4SIzcizFnmJ5rPtKn_o2PBePzsOfWmZA&oe=69E4D3F7" 
+                             alt="Trụ sở Viettel" class="w-full h-auto object-cover scale-105">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <div class="container mx-auto px-4 search-container relative z-20">
-        <div class="search-box-premium">
-            <div class="flex flex-col md:flex-row gap-3">
+        <div class="search-box-premium max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-4">
                 <div class="relative flex-1">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                    <input type="text" id="search" onkeyup="filterData()" placeholder="Tìm theo tỉnh thành hoặc tên tòa nhà..." class="w-full bg-gray-50 border border-gray-100 p-3.5 pl-12 rounded-xl focus:bg-white focus:border-vt-red outline-none text-sm transition-all">
+                    <input type="text" id="search" onkeyup="filterData()" placeholder="Tìm theo tỉnh thành hoặc tòa nhà..." class="w-full bg-gray-50 border border-gray-200 p-4 pl-12 rounded-2xl focus:bg-white focus:border-vt-red focus:ring-2 focus:ring-red-100 outline-none text-sm transition-all">
                 </div>
                 <div class="relative">
                     <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-vt-red"></i>
-                    <select id="region" onchange="filterData()" class="w-full bg-gray-50 border border-gray-100 p-3.5 pl-12 rounded-xl outline-none font-bold text-gray-700 text-sm appearance-none min-w-[160px]">
+                    <select id="region" onchange="filterData()" class="w-full bg-gray-50 border border-gray-200 p-4 pl-12 rounded-2xl outline-none font-bold text-gray-700 text-sm appearance-none min-w-[180px]">
                         <option value="all">Tất cả khu vực</option>
                         <option value="Trung">Miền Trung</option>
                         <option value="Bac">Miền Bắc</option>
@@ -97,7 +123,7 @@
         </div>
     </div>
 
-    <main class="container mx-auto px-4 py-10">
+    <main class="container mx-auto px-4 py-16">
         <div id="building-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </main>
 
@@ -109,24 +135,17 @@
                 ten: "Tòa nhà Viettel Quảng Nam", 
                 diaChi: "Số 121 Hùng Vương, Tam Kỳ, Quảng Nam",
                 trong: "345m2 - Tầng 5",
-                tienIch: ["PCCC chuẩn", "An ninh 24/7", "Bãi xe rộng", "Máy phát dự phòng"],
-                nv: "Nguyễn Văn Ninh",
-                sdt: "0984636158",
-                region: "Trung",
-                hinhAnh: [
-                    "https://i.ibb.co/wrJbn2gW/z7723237916358-ef7a71b395e8a0263febc0df1f3aaa57.jpg",
-                    "https://i.ibb.co/43BLcXK/z7723237924683-925909363d4bf927686a6a40456158d5.jpg"
-                ]
+                tienIch: ["PCCC chuẩn", "An ninh 24/7", "Bãi xe rộng"],
+                nv: "Nguyễn Văn Ninh", sdt: "0984636158", region: "Trung",
+                hinhAnh: ["https://i.ibb.co/wrJbn2gW/z7723237916358-ef7a71b395e8a0263febc0df1f3aaa57.jpg"]
             },
             { 
                 tinh: "Đà Nẵng", 
                 ten: "Viettel TechHub Đà Nẵng", 
                 diaChi: "Lô A1-1, Đường 2/9, Hải Châu, Đà Nẵng",
                 trong: "Hết diện tích", 
-                tienIch: ["Văn phòng hạng A", "View sông Hàn", "Smart Building", "Trung tâm TP"],
-                nv: "Đinh Viết Thủy",
-                sdt: "0376945999",
-                region: "Trung",
+                tienIch: ["Hạng A", "View sông Hàn", "Smart Building"],
+                nv: "Đinh Viết Thủy", sdt: "0376945999", region: "Trung",
                 hinhAnh: ["https://cdnvtfamily.keeng.vn/media/vam/01-boards-a1-horizontaljpg-page2-image1.jpg"] 
             },
             { 
@@ -134,25 +153,9 @@
                 ten: "Tòa nhà Viettel Huế", 
                 diaChi: "Số 11 Lý Thường Kiệt, TP Huế",
                 trong: "50m2 - 200m2",
-                tienIch: ["Trung tâm TP", "An ninh nghiêm ngặt", "Hạ tầng Viễn thông", "Sảnh lễ tân"],
-                nv: "Trương Khắc Mai",
-                sdt: "0982008777",
-                region: "Trung",
-                hinhAnh: [
-                    "https://i.ibb.co/8LMS51TJ/z7724359573420-621d833c15d0a8e3a96f18a5ac683afa.jpg",
-                    "https://i.ibb.co/SD2WD1yp/z7724359587344-72145b4b0b5414e573cd8e7fbf16b9c8.jpg"
-                ]
-            },
-            { 
-                tinh: "Gia Lai", 
-                ten: "Tòa nhà Viettel Gia Lai", 
-                diaChi: "Số 89 Nguyễn Tất Thành, Pleiku, Gia Lai",
-                trong: "50m2 - 200m2",
-                tienIch: ["Trục đường chính", "PCCC tiêu chuẩn", "Điện nước ổn định", "Khu dân cư đông"],
-                nv: "Hoàng Kim Bốn",
-                sdt: "0969313578",
-                region: "Trung",
-                hinhAnh: ["https://i.imgur.com/4hKsq1U.jpg"]
+                tienIch: ["Trung tâm TP", "Hạ tầng Viễn thông"],
+                nv: "Trương Khắc Mai", sdt: "0982008777", region: "Trung",
+                hinhAnh: ["https://i.ibb.co/8LMS51TJ/z7724359573420-621d833c15d0a8e3a96f18a5ac683afa.jpg"]
             }
         ];
 
@@ -160,57 +163,31 @@
             const grid = document.getElementById('building-grid');
             grid.innerHTML = data.map((b, index) => {
                 const isFull = b.trong.toLowerCase().includes("hết");
-                const galleryId = `gallery-${index}`;
-                const tags = b.tienIch.map(t => `<span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded font-bold"># ${t}</span>`).join('');
-
-                const thumbs = b.hinhAnh.length > 1 ? `
-                    <div class="grid grid-cols-4 gap-2 mt-2 px-5">
-                        ${b.hinhAnh.map(img => `
-                            <a href="${img}" data-fancybox="${galleryId}">
-                                <img src="${img}" class="thumb-img border border-gray-200">
-                            </a>
-                        `).join('')}
-                    </div>
-                ` : '';
-
                 return `
-                    <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col border border-gray-100">
-                        <div class="relative h-56 overflow-hidden">
-                             <span class="absolute top-4 left-4 ${isFull ? 'bg-gray-500' : 'bg-vt-red'} text-white text-[10px] px-3 py-1 rounded-full font-black z-10 uppercase">
-                                ${isFull ? 'Đã đầy' : b.tinh}
-                             </span>
-                             <a href="${b.hinhAnh[0]}" data-fancybox="${galleryId}">
-                                <img src="${b.hinhAnh[0]}" class="w-full h-full object-cover transition-transform hover:scale-105 duration-500">
-                             </a>
+                    <div class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col border border-gray-100">
+                        <div class="relative h-60 overflow-hidden">
+                             <span class="absolute top-4 left-4 ${isFull ? 'bg-gray-500' : 'bg-vt-red'} text-white text-[10px] px-3 py-1 rounded-full font-black z-10 uppercase">${isFull ? 'Đã đầy' : b.tinh}</span>
+                             <img src="${b.hinhAnh[0]}" class="w-full h-full object-cover transition-transform hover:scale-110 duration-700">
                         </div>
-                        ${thumbs}
-                        <div class="p-6 flex-1 flex flex-col">
+                        <div class="p-6">
                             <h3 class="text-xl font-black text-gray-800 mb-2 leading-tight">${b.ten}</h3>
                             <p class="text-xs text-gray-500 mb-4 italic"><i class="fa-solid fa-map-pin text-vt-red"></i> ${b.diaChi}</p>
-                            <div class="mb-4 bg-teal-50 p-4 rounded-2xl border border-teal-100">
-                                <p class="text-[9px] text-vt-teal font-black uppercase mb-1">Diện tích trống:</p>
+                            <div class="bg-red-50 p-4 rounded-2xl mb-4">
+                                <p class="text-[9px] text-vt-red font-black uppercase">Diện tích trống:</p>
                                 <p class="font-black text-gray-900 text-lg">${b.trong}</p>
                             </div>
-                            <div class="mb-5">
-                                <p class="text-[9px] text-gray-400 font-black uppercase mb-2">Tiện ích nổi bật:</p>
-                                <div class="flex flex-wrap gap-1.5">${tags}</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-2xl mb-6 flex items-center gap-4 border border-gray-100">
+                            <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-xl mb-6">
                                 <div class="bg-vt-red text-white w-10 h-10 rounded-full flex items-center justify-center shadow-md">
-                                    <i class="fa-solid fa-headset"></i>
+                                    <i class="fa-solid fa-user-tie"></i>
                                 </div>
                                 <div>
-                                    <p class="text-sm font-black text-gray-800">${b.nv}</p>
-                                    <p class="text-xs font-black text-vt-red">${b.sdt}</p>
+                                    <p class="text-xs font-bold text-gray-800">${b.nv}</p>
+                                    <p class="text-sm font-black text-vt-red">${b.sdt}</p>
                                 </div>
                             </div>
-                            <div class="grid grid-cols-2 gap-3 mt-auto">
-                                <a href="${isFull ? '#' : 'tel:' + b.sdt}" class="${isFull ? 'bg-gray-300 pointer-events-none' : 'bg-vt-red'} text-white text-center py-3.5 rounded-xl font-black text-sm flex items-center justify-center gap-2">
-                                    <i class="fa-solid fa-phone-flip"></i> GỌI NGAY
-                                </a>
-                                <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-600 text-white text-center py-3.5 rounded-xl font-black text-sm flex items-center justify-center gap-2">
-                                    ZALO
-                                </a>
+                            <div class="grid grid-cols-2 gap-3">
+                                <a href="tel:${b.sdt}" class="bg-vt-red text-white text-center py-3.5 rounded-xl font-black text-xs hover:bg-red-700 transition-colors">GỌI NGAY</a>
+                                <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-600 text-white text-center py-3.5 rounded-xl font-black text-xs hover:bg-blue-700 transition-colors">ZALO</a>
                             </div>
                         </div>
                     </div>`;
@@ -229,7 +206,6 @@
         }
 
         window.onload = () => renderBuildings(buildings);
-        Fancybox.bind("[data-fancybox]", {});
     </script>
 </body>
 </html>
