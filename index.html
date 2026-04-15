@@ -15,10 +15,13 @@
         .text-vt-red { color: var(--vt-red); }
         .sticky-header { position: sticky; top: 0; z-index: 50; }
         
-        /* Hero Red Gradient - Giúp chữ trắng cực kỳ nổi bật */
-        .hero-gradient {
-            background: linear-gradient(135deg, #e60000 0%, #ad0000 100%);
-            padding: 60px 20px 80px 20px;
+        /* Cấu hình ảnh bìa làm nền Hero Section */
+        .hero-banner {
+            background: linear-gradient(rgba(180, 0, 0, 0.75), rgba(130, 0, 0, 0.85)), 
+                        url('https://scontent.fdad3-8.fna.fbcdn.net/v/t39.30808-6/649582743_1398880705616948_7586231284508477300_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHImRH-UjHh8rPUrDkbpVCjoU9OKgV4Q6ahT04qBXhDpsbdciNroAmQzGCN-L4qsIs&_nc_ohc=VJJ3qkvyZYAQ7kNvwEc5t4O&_nc_oc=Adqr573iMH5loC7OVDHwh_FSbXHIQvNApHLd9LHg2lS7SMsIDbWJKB9jsjucr1KwBfA&_nc_zt=23&_nc_ht=scontent.fdad3-8.fna&_nc_gid=83oM9S6tYCz-lM2o31LKug&_nc_ss=7a3a8&oh=00_Af2m0daV8EHq9C4SIzcizFnmJ5rPtKn_o2PBePzsOfWmZA&oe=69E4D3F7');
+            background-size: cover;
+            background-position: center;
+            padding: 70px 20px 90px 20px;
         }
 
         .hero-title-premium {
@@ -27,24 +30,23 @@
             text-transform: uppercase;
             color: white;
             line-height: 1.2;
-            text-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.4);
         }
 
         .thumb-img { aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
         .thumb-img:hover { border-color: var(--vt-red); transform: scale(0.95); }
         
-        /* Đổ bóng cho thanh tìm kiếm giống App chuyên nghiệp */
         .search-box-premium {
             background: white;
             padding: 20px;
             border-radius: 24px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
             border: 1px solid #f3f4f6;
         }
 
         @media (max-width: 768px) {
             .hero-title-premium { font-size: 1.5rem; }
-            .hero-gradient { padding: 40px 15px 70px 15px; }
+            .hero-banner { padding: 50px 15px 80px 15px; }
             .search-container { margin-top: -3.5rem; }
         }
     </style>
@@ -57,7 +59,7 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Viettel_logo_2021.svg/1200px-Viettel_logo_2021.svg.png" alt="Viettel" class="h-7 md:h-9">
                 <div class="border-l-2 border-gray-200 pl-2">
                     <h1 class="text-sm md:text-xl font-black text-vt-red uppercase leading-none">Asset</h1>
-                    <p class="text-[8px] text-gray-400 uppercase tracking-tighter">Quản lý tài sản Viettel</p>
+                    <p class="text-[8px] text-gray-400 uppercase tracking-tighter">Quản lý tài sản</p>
                 </div>
             </div>
             <a href="tel:0985990994" class="text-vt-red font-black text-sm md:text-lg bg-red-50 px-3 py-1 rounded-full border border-red-100">
@@ -66,7 +68,7 @@
         </div>
     </header>
 
-    <section class="hero-gradient text-center relative overflow-hidden">
+    <section class="hero-banner text-center relative overflow-hidden">
         <div class="relative z-10 max-w-5xl mx-auto">
             <h2 class="hero-title-premium">HỆ THỐNG TÒA NHÀ <br> VIETTEL TOÀN QUỐC</h2>
             <div class="mt-4 inline-block bg-white/20 backdrop-blur-md border border-white/30 px-5 py-1.5 rounded-full">
