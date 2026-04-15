@@ -4,18 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Viettel Asset - Cho thuê văn phòng toàn quốc</title>
-    <meta name="google-site-verification" content="wgrPg6fQx6wx0V_AvHU7nwXZQ6WMhOB_WN95HszLnk" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
     <style>
-        :root { --vt-red: #e60000; --vt-teal: #008080; }
+        :root { --vt-red: #e60000; }
         .bg-vt-red { background-color: var(--vt-red); }
         .text-vt-red { color: var(--vt-red); }
         .sticky-header { position: sticky; top: 0; z-index: 50; }
         
-        /* New Premium Hero Section */
         .hero-section {
             background: linear-gradient(135deg, #fdfdfd 0%, #f1f1f1 100%);
             padding: 40px 0 100px 0;
@@ -23,31 +21,18 @@
         }
 
         .hero-title-premium {
-            font-size: 2.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            color: var(--vt-red);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem; font-weight: 900; text-transform: uppercase;
+            color: var(--vt-red); line-height: 1.1; margin-bottom: 1.5rem;
         }
 
         .hq-image-card {
             border-radius: 30px;
             box-shadow: 0 25px 50px -12px rgba(230, 0, 0, 0.2);
             border: 4px solid white;
-            transition: transform 0.3s ease;
-        }
-        .hq-image-card:hover { transform: translateY(-10px); }
-
-        .search-box-premium {
-            background: white;
-            padding: 24px;
-            border-radius: 24px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e5e7eb;
+            overflow: hidden;
         }
 
-        /* --- PHẦN THIẾT KẾ HÌNH ẢNH NHỎ MỚI --- */
+        /* THIẾT KẾ ẢNH NHỎ */
         .thumb-overlay {
             position: absolute;
             bottom: 0;
@@ -73,15 +58,10 @@
             transition: all 0.2s;
             flex-shrink: 0;
         }
-        .thumb-img-item:hover {
-            border-color: white;
-            transform: translateY(-2px);
-        }
+        .thumb-img-item:hover { border-color: white; transform: translateY(-2px); }
 
         @media (max-width: 768px) {
             .hero-title-premium { font-size: 1.8rem; text-align: center; }
-            .hero-section { padding: 30px 0 80px 0; }
-            .search-container { margin-top: -4rem; }
         }
     </style>
 </head>
@@ -109,44 +89,35 @@
                     <div class="inline-block bg-red-100 text-vt-red text-xs font-black px-4 py-1.5 rounded-full mb-4">VIETTEL ASSET</div>
                     <h2 class="hero-title-premium">HỆ THỐNG TÒA NHÀ <br> <span class="text-gray-900">VIETTEL TOÀN QUỐC</span></h2>
                     <p class="text-gray-600 mb-6 text-sm md:text-base leading-relaxed">
-                        Cung cấp không gian làm việc chuyên nghiệp, hạ tầng viễn thông hiện đại cùng dịch vụ quản lý vận hành tiêu chuẩn cao từ Tập đoàn Công nghiệp - Viễn thông Quân đội Viettel.
+                        Cung cấp không gian làm việc chuyên nghiệp và hạ tầng hiện đại từ Tập đoàn Viettel.
                     </p>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> PCCC chuẩn quy định</div>
-                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> Bảo trì hệ thống kỹ thuật định kỳ</div>
-                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> An ninh 24/7</div>
-                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> Vệ sinh khu vực chung</div>
-                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> Cây xanh & Kiểm soát côn trùng</div>
-                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> Hồ sơ pháp lý đầy đủ</div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm font-bold text-gray-700">
+                        <div><i class="fa-solid fa-circle-check text-green-500 mr-2"></i>PCCC chuẩn quy định</div>
+                        <div><i class="fa-solid fa-circle-check text-green-500 mr-2"></i>An ninh 24/7</div>
+                        <div><i class="fa-solid fa-circle-check text-green-500 mr-2"></i>Pháp lý đầy đủ</div>
+                        <div><i class="fa-solid fa-circle-check text-green-500 mr-2"></i>Vận hành tiêu chuẩn cao</div>
                     </div>
                 </div>
 
                 <div class="w-full md:w-1/2">
-                    <div class="hq-image-card overflow-hidden">
-                        <img src="https://scontent.fdad3-8.fna.fbcdn.net/v/t39.30808-6/649582743_1398880705616948_7586231284508477300_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=13d280&oh=00_Af2m0daV8EHq9C4SIzcizFnmJ5rPtKn_o2PBePzsOfWmZA&oe=69E4D3F7" alt="Trụ sở Viettel" class="w-full h-auto object-cover scale-105">
+                    <div class="hq-image-card">
+                        <img src="https://scontent.fdad3-8.fna.fbcdn.net/v/t39.30808-6/649582743_1398880705616948_7586231284508477300_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=13d280&oh=00_Af2m0daV8EHq9C4SIzcizFnmJ5rPtKn_o2PBePzsOfWmZA&oe=69E4D3F7" 
+                             alt="Trụ sở Tập đoàn Viettel" class="w-full h-auto object-cover scale-105 transition-transform hover:scale-110 duration-500">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="container mx-auto px-4 search-container relative z-20">
-        <div class="search-box-premium max-w-4xl mx-auto">
-            <div class="flex flex-col md:flex-row gap-4">
-                <div class="relative flex-1">
-                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                    <input type="text" id="search" onkeyup="filterData()" placeholder="Tìm theo tỉnh thành hoặc tòa nhà..." class="w-full bg-gray-50 border border-gray-200 p-4 pl-12 rounded-2xl focus:bg-white focus:border-vt-red outline-none text-sm transition-all">
-                </div>
-                <div class="relative">
-                    <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-vt-red"></i>
-                    <select id="region" onchange="filterData()" class="w-full bg-gray-50 border border-gray-200 p-4 pl-12 rounded-2xl outline-none font-bold text-gray-700 text-sm appearance-none min-w-[180px]">
-                        <option value="all">Tất cả khu vực</option>
-                        <option value="Trung">Miền Trung</option>
-                        <option value="Bac">Miền Bắc</option>
-                        <option value="Nam">Miền Nam</option>
-                    </select>
-                </div>
-            </div>
+    <div class="container mx-auto px-4 -mt-10 relative z-20">
+        <div class="bg-white p-6 rounded-3xl shadow-xl max-w-4xl mx-auto flex flex-col md:flex-row gap-4 border border-gray-100">
+            <input type="text" id="search" onkeyup="filterData()" placeholder="Tìm tỉnh thành hoặc tòa nhà..." class="flex-1 bg-gray-50 border p-4 rounded-2xl outline-none focus:border-vt-red transition-all">
+            <select id="region" onchange="filterData()" class="bg-gray-50 border p-4 rounded-2xl font-bold outline-none">
+                <option value="all">Tất cả khu vực</option>
+                <option value="Trung">Miền Trung</option>
+                <option value="Bac">Miền Bắc</option>
+                <option value="Nam">Miền Nam</option>
+            </select>
         </div>
     </div>
 
@@ -198,39 +169,34 @@
             const grid = document.getElementById('building-grid');
             grid.innerHTML = data.map((b, bIdx) => {
                 const isFull = b.trong.toLowerCase().includes("hết");
-                
-                // Tạo HTML cho các ảnh nhỏ (thumbnails)
                 const thumbsHtml = b.hinhAnh.map((img, iIdx) => `
                     <img src="${img}" class="thumb-img-item" onclick="event.stopPropagation(); openGallery(${bIdx}, ${iIdx})">
                 `).join('');
 
                 return `
-                    <div class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col border border-gray-100">
+                    <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col border border-gray-100 hover:shadow-2xl transition-all">
                         <div class="relative h-60 overflow-hidden cursor-pointer" onclick="openGallery(${bIdx}, 0)">
-                            <span class="absolute top-4 left-4 ${isFull ? 'bg-gray-500' : 'bg-vt-red'} text-white text-[10px] px-3 py-1 rounded-full font-black z-30 uppercase">${isFull ? 'Đã đầy' : b.tinh}</span>
-                            <img src="${b.hinhAnh[0]}" class="w-full h-full object-cover transition-transform hover:scale-105 duration-700">
-                            
+                            <span class="absolute top-4 left-4 z-30 ${isFull ? 'bg-gray-500' : 'bg-vt-red'} text-white text-[10px] px-3 py-1 rounded-full font-black uppercase">${isFull ? 'Đã đầy' : b.tinh}</span>
+                            <img src="${b.hinhAnh[0]}" class="w-full h-full object-cover">
                             <div class="thumb-overlay">${thumbsHtml}</div>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-black text-gray-800 mb-2 leading-tight">${b.ten}</h3>
-                            <p class="text-xs text-gray-500 mb-4 italic"><i class="fa-solid fa-map-pin text-vt-red"></i> ${b.diaChi}</p>
+                            <h3 class="text-xl font-black text-gray-800 mb-1 leading-tight">${b.ten}</h3>
+                            <p class="text-[11px] text-gray-500 mb-3 italic"><i class="fa-solid fa-map-pin text-vt-red mr-1"></i>${b.diaChi}</p>
+                            <div class="flex flex-wrap gap-1 mb-4">
+                                ${b.tienIch.map(t => `<span class="bg-gray-100 text-gray-600 text-[9px] px-2 py-0.5 rounded-md font-bold">#${t}</span>`).join('')}
+                            </div>
                             <div class="bg-red-50 p-4 rounded-2xl mb-4">
                                 <p class="text-[9px] text-vt-red font-black uppercase">Diện tích trống:</p>
                                 <p class="font-black text-gray-900 text-lg">${b.trong}</p>
                             </div>
                             <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-xl mb-6">
-                                <div class="bg-vt-red text-white w-10 h-10 rounded-full flex items-center justify-center shadow-md">
-                                    <i class="fa-solid fa-user-tie"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs font-bold text-gray-800">${b.nv}</p>
-                                    <p class="text-sm font-black text-vt-red">${b.sdt}</p>
-                                </div>
+                                <div class="bg-vt-red text-white w-10 h-10 rounded-full flex items-center justify-center shadow-md"><i class="fa-solid fa-user-tie"></i></div>
+                                <div><p class="text-xs font-bold text-gray-800">${b.nv}</p><p class="text-sm font-black text-vt-red">${b.sdt}</p></div>
                             </div>
                             <div class="grid grid-cols-2 gap-3">
-                                <a href="tel:${b.sdt}" class="bg-vt-red text-white text-center py-3.5 rounded-xl font-black text-xs hover:bg-red-700 transition-colors">GỌI NGAY</a>
-                                <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-600 text-white text-center py-3.5 rounded-xl font-black text-xs hover:bg-blue-700 transition-colors">ZALO</a>
+                                <a href="tel:${b.sdt}" class="bg-vt-red text-white text-center py-3.5 rounded-xl font-black text-xs hover:bg-red-700 transition-all">GỌI NGAY</a>
+                                <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-600 text-white text-center py-3.5 rounded-xl font-black text-xs hover:bg-blue-700 transition-all">ZALO</a>
                             </div>
                         </div>
                     </div>`;
@@ -241,9 +207,7 @@
             const search = document.getElementById('search').value.toLowerCase();
             const region = document.getElementById('region').value;
             const filtered = buildings.filter(b => {
-                const matchName = b.tinh.toLowerCase().includes(search) || b.ten.toLowerCase().includes(search);
-                const matchRegion = region === 'all' || b.region === region;
-                return matchName && matchRegion;
+                return (b.tinh.toLowerCase().includes(search) || b.ten.toLowerCase().includes(search)) && (region === 'all' || b.region === region);
             });
             renderBuildings(filtered);
         }
