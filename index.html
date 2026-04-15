@@ -10,33 +10,44 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
     <style>
-        :root { --vt-red: #e60000; --vt-teal: #008080; }
-        .bg-vt-red { background-color: var(--vt-red); }
-        .text-vt-red { color: var(--vt-red); }
-        .text-vt-teal { color: var(--vt-teal); }
-        .sticky-header { position: sticky; top: 0; z-index: 50; }
-        
-        .hero-title-3d {
-            font-size: 3rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.1;
-            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.3));
-        }
+    :root { --vt-red: #e60000; --vt-teal: #008080; }
+    .bg-vt-red { background-color: var(--vt-red); }
+    .text-vt-red { color: var(--vt-red); }
+    .sticky-header { position: sticky; top: 0; z-index: 50; }
+    
+    /* Hero Red Gradient - Giúp chữ trắng cực kỳ nổi bật */
+    .hero-gradient {
+        background: linear-gradient(135deg, #e60000 0%, #ad0000 100%);
+        padding: 60px 20px 80px 20px;
+    }
 
-        .thumb-img { aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
-        .thumb-img:hover { opacity: 0.8; transform: scale(0.95); }
-        
-        /* Tối ưu Mobile */
-        @media (max-width: 768px) {
-            .hero-title-3d { font-size: 1.6rem; }
-            .section-hero { padding: 3rem 1rem 5rem 1rem; }
-            .search-container { margin-top: -3.5rem; }
-        }
-    </style>
+    .hero-title-premium {
+        font-size: 2.2rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: white;
+        line-height: 1.2;
+        text-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    .thumb-img { aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
+    .thumb-img:hover { border-color: var(--vt-red); transform: scale(0.95); }
+    
+    /* Bo góc và đổ bóng cho thanh tìm kiếm giống App chuyên nghiệp */
+    .search-box-premium {
+        background: white;
+        padding: 20px;
+        border-radius: 24px;
+        shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        border: 1px solid #f3f4f6;
+    }
+
+    @media (max-width: 768px) {
+        .hero-title-premium { font-size: 1.5rem; }
+        .hero-gradient { padding: 40px 15px 70px 15px; }
+        .search-container { margin-top: -3.5rem; }
+    }
+</style>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
 
@@ -50,28 +61,49 @@
                 <p class="text-vt-red font-black text-sm md:text-lg">0985.990.994</p>
             </div>
         </div>
-    </header>
-
-    <section class="section-hero bg-vt-teal py-20 text-center relative overflow-hidden shadow-inner">
-        <div class="relative z-10 max-w-5xl mx-auto px-4">
-            <h2 class="hero-title-3d">HỆ THỐNG TÒA NHÀ <br> VIETTEL TOÀN QUỐC</h2>
-            <div class="mt-4 inline-block bg-black/30 backdrop-blur-md border border-yellow-400 px-6 py-2 rounded-full">
-                <p class="text-yellow-400 font-bold text-sm uppercase">🏠 Giải pháp văn phòng chuyên nghiệp</p>
+    <header class="bg-white shadow-sm sticky-header border-b-2 border-vt-red">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Viettel_logo_2021.svg/1200px-Viettel_logo_2021.svg.png" alt="Viettel" class="h-7 md:h-9">
+            <div class="border-l-2 border-gray-200 pl-2">
+                <h1 class="text-sm md:text-xl font-black text-vt-red uppercase leading-none">Asset</h1>
+                <p class="text-[8px] text-gray-400 uppercase tracking-tighter">Quản lý tài sản</p>
             </div>
         </div>
-    </section>
+        <a href="tel:0985990994" class="text-vt-red font-black text-sm md:text-lg bg-red-50 px-3 py-1 rounded-full border border-red-100">
+            <i class="fa-solid fa-phone-volume mr-1"></i> 0985.990.994
+        </a>
+    </div>
+</header>
 
-    <div class="container mx-auto px-4 search-container relative z-20">
-        <div class="bg-white p-4 rounded-2xl shadow-2xl flex flex-col md:flex-row gap-3 border border-gray-100">
-            <input type="text" id="search" onkeyup="filterData()" placeholder="Tìm theo tỉnh thành hoặc tên tòa nhà..." class="flex-1 border-2 border-gray-100 p-3 rounded-xl focus:border-vt-teal outline-none text-sm">
-            <select id="region" onchange="filterData()" class="border-2 border-gray-100 p-3 rounded-xl outline-none font-bold text-gray-600 bg-gray-50 text-sm">
-                <option value="all">Tất cả khu vực</option>
-                <option value="Trung">Miền Trung</option>
-                <option value="Bac">Miền Bắc</option>
-                <option value="Nam">Miền Nam</option>
-            </select>
+<section class="hero-gradient text-center relative overflow-hidden">
+    <div class="relative z-10 max-w-5xl mx-auto">
+        <h2 class="hero-title-premium">HỆ THỐNG TÒA NHÀ <br> VIETTEL TOÀN QUỐC</h2>
+        <div class="mt-4 inline-block bg-white/20 backdrop-blur-md border border-white/30 px-5 py-1.5 rounded-full">
+            <p class="text-white font-bold text-[10px] md:text-xs uppercase tracking-wide">🏠 Giải pháp văn phòng chuyên nghiệp</p>
         </div>
     </div>
+</section>
+
+<div class="container mx-auto px-4 search-container relative z-20">
+    <div class="search-box-premium shadow-2xl">
+        <div class="flex flex-col md:flex-row gap-3">
+            <div class="relative flex-1">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <input type="text" id="search" onkeyup="filterData()" placeholder="Tìm theo tỉnh thành hoặc tên tòa nhà..." class="w-full bg-gray-50 border border-gray-100 p-3.5 pl-12 rounded-xl focus:bg-white focus:border-vt-red outline-none text-sm transition-all">
+            </div>
+            <div class="relative">
+                <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-vt-red"></i>
+                <select id="region" onchange="filterData()" class="w-full bg-gray-50 border border-gray-100 p-3.5 pl-12 rounded-xl outline-none font-bold text-gray-700 text-sm appearance-none min-w-[160px]">
+                    <option value="all">Tất cả khu vực</option>
+                    <option value="Trung">Miền Trung</option>
+                    <option value="Bac">Miền Bắc</option>
+                    <option value="Nam">Miền Nam</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
 
     <main class="container mx-auto px-4 py-10">
         <div id="building-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
