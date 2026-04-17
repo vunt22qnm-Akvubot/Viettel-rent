@@ -19,7 +19,7 @@
         
         .hero-section {
             background: linear-gradient(135deg, #fdfdfd 0%, #f1f1f1 100%);
-            padding: 40px 0 120px 0;
+            padding: 40px 0 100px 0;
             border-bottom: 1px solid #eee;
         }
 
@@ -76,7 +76,7 @@
                 </div>
             </div>
             <a href="tel:0985990994" class="text-vt-red font-black text-sm md:text-lg bg-red-50 px-4 py-2 rounded-full border border-red-100 transition-all hover:bg-red-600 hover:text-white">
-                <i class="fa-solid fa-phone-volume mr-1"></i>Mr Vũ - 0985.990.994
+                <i class="fa-solid fa-phone-volume mr-1"></i>Mr Vũ- 0985.990.994
             </a>
         </div>
     </header>
@@ -94,8 +94,10 @@
                     </p>
                     <div class="flex flex-wrap justify-center md:justify-start gap-4">
                         <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> PCCC chuẩn quy định</div>
-                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> Bảo trì định kỳ</div>
-                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> An ninh 24/7</div>
+                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> Bảo trì hệ thống kỹ thuật định kỳ</div>
+                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> An ninh 24/7</div>                        
+                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> Bảo hiểm cháy nổ bắt buộc, hồ sơ pháp lý đầy đủ, tuân thủ quy định nhà nước</div>
+                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> Vệ sinh khu vực chung, cây xanh cảnh quang xung quanh tòa nhà, khu vực chung</div>
                     </div>
                 </div>
                 <div class="w-full md:w-1/2">
@@ -107,46 +109,31 @@
         </div>
     </section>
 
-    <div class="container mx-auto px-4 -mt-16 relative z-20">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            
-            <div class="lg:col-span-1 bg-white p-6 rounded-3xl shadow-xl border border-gray-100">
-                <h3 class="text-xs font-black text-vt-red mb-4 uppercase flex items-center gap-2">
-                    <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm nhanh
-                </h3>
-                <div class="space-y-4">
-                    <input type="text" id="search" onkeyup="filterData()" placeholder="Tỉnh thành hoặc tòa nhà..." 
-                           class="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl outline-none focus:ring-2 focus:ring-vt-red transition-all">
-                    <select id="region" onchange="filterData()" class="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl font-bold outline-none cursor-pointer">
-                        <option value="all">Tất cả khu vực</option>
-                        <option value="Trung">Miền Trung</option>
-                        <option value="Bac">Miền Bắc</option>
-                        <option value="Nam">Miền Nam</option>
-                    </select>
-                </div>
+    <div class="container mx-auto px-4 -mt-10 relative z-20">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div class="lg:col-span-1 bg-white p-6 rounded-3xl shadow-xl flex flex-col gap-4 border border-gray-100">
+                <input type="text" id="search" onkeyup="filterData()" placeholder="Tìm tỉnh thành hoặc tòa nhà..." class="w-full bg-gray-50 border p-4 rounded-2xl outline-none focus:border-vt-red transition-all">
+                <select id="region" onchange="filterData()" class="w-full bg-gray-50 border p-4 rounded-2xl font-bold outline-none">
+                    <option value="all">Tất cả khu vực</option>
+                    <option value="Trung">Miền Trung</option>
+                    <option value="Bac">Miền Bắc</option>
+                    <option value="Nam">Miền Nam</option>
+                </select>
             </div>
-
             <div class="lg:col-span-2 bg-white p-6 rounded-3xl shadow-xl border border-gray-100">
-                <h3 class="text-xs font-black text-vt-red mb-4 uppercase flex items-center gap-2">
-                    <i class="fa-solid fa-paper-plane"></i> Đăng ký thuê văn phòng
-                </h3>
                 <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="space-y-4">
-                        <input type="text" name="company" required placeholder="Tên đơn vị/Công ty" 
-                               class="w-full p-4 rounded-2xl bg-gray-50 border-none ring-1 ring-gray-100 focus:ring-2 focus:ring-vt-red outline-none transition-all">
-                        <input type="tel" name="phone" required placeholder="Số điện thoại" 
-                               class="w-full p-4 rounded-2xl bg-gray-50 border-none ring-1 ring-gray-100 focus:ring-2 focus:ring-vt-red outline-none transition-all">
+                        <input type="text" name="company" required placeholder="Tên đơn vị/Công ty" class="w-full p-4 rounded-2xl border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-vt-red outline-none transition-all">
+                        <input type="tel" name="phone" required placeholder="Số điện thoại liên hệ" class="w-full p-4 rounded-2xl border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-vt-red outline-none transition-all">
                     </div>
                     <div class="flex flex-col gap-4">
-                        <textarea name="requirement" rows="1" placeholder="Nhu cầu: Diện tích, vị trí..." 
-                                  class="w-full p-4 rounded-2xl bg-gray-50 border-none ring-1 ring-gray-100 focus:ring-2 focus:ring-vt-red outline-none transition-all flex-1"></textarea>
-                        <button type="submit" id="submitBtn" 
-                                class="w-full bg-vt-red text-white font-black py-4 rounded-2xl hover:bg-red-700 transition-all shadow-lg shadow-red-200 uppercase text-xs">
+                        <textarea name="requirement" rows="1" placeholder="Nhu cầu chi tiết (Diện tích, vị trí...)" class="w-full p-4 rounded-2xl border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-vt-red outline-none transition-all flex-1"></textarea>
+                        <button type="submit" id="submitBtn" class="w-full bg-vt-red text-white font-black py-4 rounded-2xl hover:bg-red-700 transition-all shadow-lg shadow-red-200 uppercase">
                             Gửi yêu cầu ngay
                         </button>
                     </div>
                 </form>
-                <div id="responseMsg" class="mt-2 text-center text-xs font-bold hidden"></div>
+                <div id="responseMsg" class="mt-2 text-center text-sm font-bold hidden"></div>
             </div>
         </div>
     </div>
@@ -156,26 +143,66 @@
     </main>
 
     <footer class="bg-gray-900 text-white pt-12 pb-8">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex flex-col items-center mb-8">
-                <div class="flex items-center gap-2 mb-4 grayscale brightness-200">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Viettel_logo_2021.svg/1200px-Viettel_logo_2021.svg.png" alt="Viettel" class="h-8">
-                    <span class="text-xl font-black uppercase">Asset</span>
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4 grayscale brightness-200">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Viettel_logo_2021.svg/1200px-Viettel_logo_2021.svg.png" alt="Viettel" class="h-8">
+                        <span class="text-xl font-black uppercase tracking-tighter">Asset</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Đơn vị quản lý và khai thác tài sản bất động sản chuyên nghiệp thuộc Tập đoàn Công nghiệp - Viễn thông Quân đội (Viettel). 
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-vt-red transition-colors"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-vt-red transition-colors"><i class="fa-brands fa-youtube text-xs"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-vt-red transition-colors"><i class="fa-solid fa-globe text-xs"></i></a>
+                    </div>
                 </div>
-                <p class="text-gray-400 text-sm max-w-md">Đơn vị quản lý tài sản chuyên nghiệp thuộc Tập đoàn Công nghiệp - Viễn thông Quân đội (Viettel).</p>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-l-4 border-vt-red pl-3 uppercase">Liên kết nhanh</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors"><i class="fa-solid fa-chevron-right text-[10px] mr-2 text-vt-red"></i>Về chúng tôi</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors"><i class="fa-solid fa-chevron-right text-[10px] mr-2 text-vt-red"></i>Danh sách tòa nhà</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors"><i class="fa-solid fa-chevron-right text-[10px] mr-2 text-vt-red"></i>Quy trình thuê</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors"><i class="fa-solid fa-chevron-right text-[10px] mr-2 text-vt-red"></i>Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-l-4 border-vt-red pl-3 uppercase">Thông tin liên hệ</h4>
+                    <div class="space-y-4 text-sm text-gray-400">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-vt-red"></i>
+                            <span>Tầng 2, Tháp A, Tòa The Light, Đường Tố Hữu, p Đại Mỗ, Hà Nội</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-vt-red"></i>
+                            <span class="font-bold text-white">0985.990.994 (Mr. Vũ)</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-vt-red"></i>
+                            <span>Vunt32.qnm@gmail.com.vn</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <hr class="border-gray-800 mb-8">
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest">© 2026 VIETTEL ASSET. ALL RIGHTS RESERVED.</p>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-gray-500 uppercase tracking-widest font-bold">
+                <p>© 2026 VIETTEL ASSET. ALL RIGHTS RESERVED.</p>
+                <p>Thiết kế bởi Viettel Team</p>
+            </div>
         </div>
     </footer>
 
-    <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-vt-red text-white rounded-full shadow-2xl flex items-center justify-center opacity-0 invisible transition-all duration-300 z-[60] hover:bg-red-700">
+    <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-vt-red text-white rounded-full shadow-2xl flex items-center justify-center opacity-0 invisible transition-all duration-300 z-[60] hover:bg-red-700 hover:-translate-y-1">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
-        // DỮ LIỆU TÒA NHÀ
+        // DỮ LIỆU TÒA NHÀ (GIỮ NGUYÊN)
         const buildings = [
             { 
                 tinh: "Quảng Nam", ten: "Tòa nhà Viettel Quảng Nam", diaChi: "Số 121 Hùng Vương, Tam Kỳ, Quảng Nam",
@@ -224,7 +251,10 @@
                     "https://i.ibb.co/XZ0ymkV5/z7734939261828-e5eedf4fd229b0ed91df656a5ded50e6.jpg",
                     "https://i.ibb.co/mVxXJqHv/z7733711410541-3fc0c374e941377dac9334098bc2a6a4.jpg",
                     "https://i.ibb.co/YzhVkmw/z7733711403801-202abead725d382fa3b91c55ed3e60b9.jpg",
-                    "https://i.ibb.co/20dV7sBY/z7733711414543-f36f4d81a77dccf8502d4122824977c2.jpg"
+                    "https://i.ibb.co/20dV7sBY/z7733711414543-f36f4d81a77dccf8502d4122824977c2.jpg",
+                    "https://i.ibb.co/GSCwhtq/z7733713751148-e595cd5f32278569061a67634fda2782.jpg",
+                    "https://i.ibb.co/G4BDnCbV/z7733711433392-3fc83c8f45857f980e8302883a491c7a.jpg",
+                    "https://i.ibb.co/99SLttgN/z7733711410862-2fdca27938d88ab8dabdeb8c46d84d83.jpg"
                 ]
             },
             { 
@@ -235,7 +265,9 @@
                 hinhAnh: [
                     "https://i.ibb.co/kszYk6DR/z7733769877386-8986fdb838da4c094efd8b7e783e0e72.jpg",
                     "https://i.ibb.co/pj83jKmt/z7733769882781-af4e371831cbe803428340e5e108954a.jpg",
-                    "https://i.ibb.co/ksPHryWT/z7733769884889-0d71134fd47f9b51c8117e90f1b09d65.jpg"
+                    "https://i.ibb.co/ksPHryWT/z7733769884889-0d71134fd47f9b51c8117e90f1b09d65.jpg",
+                    "https://i.ibb.co/yFYp5wtx/z7733769883633-d3b3019e1d670a4db0c9476bdb943070.jpg",
+                    "https://i.ibb.co/dwyDw2cr/z7733769896972-ce15475d559e9b0ab6cc650988936320.jpg"
                 ]
             }
         ];
@@ -258,30 +290,30 @@
                     : b.trong;
 
                 return `
-                    <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col border border-gray-50 hover:shadow-2xl transition-all">
+                    <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col border border-gray-100 hover:shadow-2xl transition-all">
                         <div class="relative h-60 overflow-hidden cursor-pointer" onclick="openGallery(${bIdx}, 0)">
                             <span class="absolute top-4 left-4 z-30 ${isFull ? 'bg-gray-500' : 'bg-vt-red'} text-white text-[10px] px-3 py-1 rounded-full font-black uppercase">${isFull ? 'Đã đầy' : b.tinh}</span>
                             <img src="${b.hinhAnh[0]}" class="w-full h-full object-cover">
                             <div class="thumb-overlay">${thumbsHtml}</div>
                         </div>
                         <div class="p-6 flex-1 flex flex-col">
-                            <h3 class="text-lg font-black text-gray-800 mb-1 leading-tight">${b.ten}</h3>
-                            <p class="text-[10px] text-gray-400 mb-3"><i class="fa-solid fa-map-pin text-vt-red mr-1"></i>${b.diaChi}</p>
+                            <h3 class="text-xl font-black text-gray-800 mb-1 leading-tight">${b.ten}</h3>
+                            <p class="text-[11px] text-gray-500 mb-3 italic"><i class="fa-solid fa-map-pin text-vt-red mr-1"></i>${b.diaChi}</p>
                             <div class="flex flex-wrap gap-1 mb-4">
-                                ${b.tienIch.map(t => `<span class="bg-gray-100 text-gray-500 text-[8px] px-2 py-0.5 rounded font-bold">#${t}</span>`).join('')}
+                                ${b.tienIch.map(t => `<span class="bg-gray-100 text-gray-600 text-[9px] px-2 py-0.5 rounded-md font-bold">#${t}</span>`).join('')}
                             </div>
                             <div class="bg-red-50 p-4 rounded-2xl mb-4">
                                 <p class="text-[9px] text-vt-red font-black uppercase mb-1">Diện tích trống:</p>
                                 <div class="font-black text-gray-900 text-sm">${trongHtml}</div>
                             </div>
                             <div class="mt-auto">
-                                <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-xl mb-4">
-                                    <div class="bg-vt-red text-white w-8 h-8 rounded-full flex items-center justify-center text-xs"><i class="fa-solid fa-user"></i></div>
-                                    <div><p class="text-[10px] font-bold text-gray-500">${b.nv}</p><p class="text-xs font-black text-vt-red">${b.sdt}</p></div>
+                                <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-xl mb-6">
+                                    <div class="bg-vt-red text-white w-10 h-10 rounded-full flex items-center justify-center shadow-md"><i class="fa-solid fa-user-tie"></i></div>
+                                    <div><p class="text-xs font-bold text-gray-800">${b.nv}</p><p class="text-sm font-black text-vt-red">${b.sdt}</p></div>
                                 </div>
-                                <div class="grid grid-cols-2 gap-2">
-                                    <a href="tel:${b.sdt}" class="bg-vt-red text-white text-center py-3 rounded-xl font-black text-[10px] hover:bg-red-700">GỌI NGAY</a>
-                                    <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-600 text-white text-center py-3 rounded-xl font-black text-[10px] hover:bg-blue-700">ZALO</a>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <a href="tel:${b.sdt}" class="bg-vt-red text-white text-center py-3.5 rounded-xl font-black text-xs hover:bg-red-700 transition-all">GỌI NGAY</a>
+                                    <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-600 text-white text-center py-3.5 rounded-xl font-black text-xs hover:bg-blue-700 transition-all">ZALO</a>
                                 </div>
                             </div>
                         </div>
@@ -310,7 +342,7 @@
             btn.innerHTML = "ĐANG GỬI...";
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                 .then(response => {
-                    msg.innerHTML = "Cảm ơn! Chúng tôi sẽ liên hệ sớm nhất.";
+                    msg.innerHTML = "Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm nhất.";
                     msg.classList.remove('hidden', 'text-red-500');
                     msg.classList.add('text-green-600');
                     form.reset();
