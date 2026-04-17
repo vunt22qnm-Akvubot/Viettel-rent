@@ -272,5 +272,34 @@
         </div>
     </div>
 </section>
+    <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzaWwqlEtRqrXdapx4CzsvABuOZVN3iHUo-6JaHm5pExMGWFr1LTG_WZQrUcYSinpnd/exec'; // Dán link App Script vào đây
+    const form = document.getElementById('contactForm');
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('responseMsg');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerHTML = "ĐANG GỬI...";
+        
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm nhất.";
+                msg.classList.remove('hidden', 'text-red-500');
+                msg.classList.add('text-green-600');
+                form.reset();
+                btn.disabled = false;
+                btn.innerHTML = "GỬI YÊU CẦU NGAY";
+            })
+            .catch(error => {
+                msg.innerHTML = "Có lỗi xảy ra, vui lòng thử lại.";
+                msg.classList.remove('hidden', 'text-green-600');
+                msg.classList.add('text-red-500');
+                btn.disabled = false;
+                btn.innerHTML = "GỬI LẠI";
+            });
+    });
+</script>
 </body>
 </html>
