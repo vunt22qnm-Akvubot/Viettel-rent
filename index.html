@@ -255,6 +255,25 @@
         }
 
         window.onload = () => renderBuildings(buildings);
+        // Logic cho nút Back to Top
+const backToTopBtn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+    } else {
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+    }
+});
+
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
     </script>
     <section class="bg-white py-16 border-t">
     <div class="container mx-auto px-4 max-w-2xl">
@@ -373,5 +392,8 @@
         </div>
     </div>
 </footer>
+    <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-vt-red text-white rounded-full shadow-2xl flex items-center justify-center opacity-0 invisible transition-all duration-300 z-[60] hover:bg-red-700 hover:-translate-y-1">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
 </body>
 </html>
