@@ -217,7 +217,7 @@
                     <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col border border-gray-100 hover:shadow-2xl transition-all">
                         <div class="relative h-60 overflow-hidden cursor-pointer" onclick="openGallery(${bIdx}, 0)">
                             <span class="absolute top-4 left-4 z-30 ${isFull ? 'bg-gray-500' : 'bg-vt-red'} text-white text-[10px] px-3 py-1 rounded-full font-black uppercase">${isFull ? 'Đã đầy' : b.tinh}</span>
-                            <img src="${b.hinhAnh[0]}" class="w-full h-full object-cover ${isFull ? 'grayscale-[0.5] opacity-80' : ''}">
+                            <img src="${b.hinhAnh[0]}" class="w-full h-full object-cover">
                             <div class="thumb-overlay">${thumbsHtml}</div>
                         </div>
                         <div class="p-6 flex-1 flex flex-col">
