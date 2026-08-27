@@ -94,7 +94,7 @@
                     </p>
                     <div class="flex flex-wrap justify-center md:justify-start gap-4">
                         <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> PCCC chuẩn quy định</div>
-                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> Bảo trì hệ thống kỹ thuật định kỳ</div>
+                        <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> Hệ thống kỹ thuật đạt tiêu chuẩn (Thang máy, Điều hòa Trung tâm, PCCC&CNCH, MPĐ dự phòng 24/24h.</div>
                         <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> An ninh 24/7</div>                        
                         <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> Bảo hiểm cháy nổ bắt buộc, hồ sơ pháp lý đầy đủ, tuân thủ quy định nhà nước</div>
                         <div class="flex items-center gap-2 text-sm font-bold text-gray-700"><i class="fa-solid fa-circle-check text-green-500"></i> Vệ sinh khu vực chung, cây xanh cảnh quang xung quanh tòa nhà, khu vực chung</div>
@@ -109,8 +109,10 @@
         </div>
     </section>
 
+    <!-- KHỐI KẾT HỢP TÌM KIẾM VÀ ĐĂNG KÝ -->
     <div class="container mx-auto px-4 -mt-10 relative z-20">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <!-- Tìm kiếm/Lọc tỉnh -->
             <div class="lg:col-span-1 bg-white p-6 rounded-3xl shadow-xl flex flex-col gap-4 border border-gray-100">
                 <input type="text" id="search" onkeyup="filterData()" placeholder="Tìm tỉnh thành hoặc tòa nhà..." class="w-full bg-gray-50 border p-4 rounded-2xl outline-none focus:border-vt-red transition-all">
                 <select id="region" onchange="filterData()" class="w-full bg-gray-50 border p-4 rounded-2xl font-bold outline-none">
@@ -120,6 +122,7 @@
                     <option value="Nam">Miền Nam</option>
                 </select>
             </div>
+            <!-- Form đăng ký -->
             <div class="lg:col-span-2 bg-white p-6 rounded-3xl shadow-xl border border-gray-100">
                 <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="space-y-4">
@@ -202,10 +205,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
-        // DỮ LIỆU TÒA NHÀ (GIỮ NGUYÊN)
+        // DỮ LIỆU TÒA NHÀ (ĐÃ THÊM THUỘC TÍNH linkMaps KHU VỰC BẢN ĐỒ)
         const buildings = [
             { 
                 tinh: "Quảng Nam", ten: "Tòa nhà Viettel Quảng Nam", diaChi: "Số 121 Hùng Vương, Tam Kỳ, Quảng Nam",
+                linkMaps: "https://maps.google.com/?q=121+Hùng+Vương,+Tam+Kỳ,+Quảng+Nam",
                 trong: "345m2 - Tầng 5", tienIch: ["PCCC chuẩn", "An ninh 24/7", "Bãi xe rộng", "Máy phát dự phòng"],
                 nv: "Nguyễn Văn Ninh", sdt: "0984636158", region: "Trung",
                 hinhAnh: [
@@ -218,12 +222,14 @@
             },
             { 
                 tinh: "Đà Nẵng", ten: "Viettel TechHub Building Đà Nẵng", diaChi: "Lô A1-1, Đường 2/9, Hải Châu, Đà Nẵng",
+                linkMaps: "https://maps.google.com/?q=Lô+A1-1,+Đường+2/9,+Hải+Châu,+Đà+Nẵng",
                 trong: "Hết diện tích", tienIch: ["Văn phòng hạng A", "View sông Hàn", "Smart Building", "Trung tâm TP"],
                 nv: "Đinh Viết Thủy", sdt: "0376945999", region: "Trung",
                 hinhAnh: ["https://cdnvtfamily.keeng.vn/media/vam/01-boards-a1-horizontaljpg-page2-image1.jpg"] 
             },
             { 
                 tinh: "Thừa Thiên Huế", ten: "Tòa nhà Viettel Huế", diaChi: "Số 11 Lý Thường Kiệt, TP Huế",
+                linkMaps: "https://maps.google.com/?q=11+Lý+Thường+Kiệt,+TP+Huế",
                 trong: "50m2 - 200m2", tienIch: ["Trung tâm TP", "An ninh nghiêm ngặt", "Hạ tầng Viễn thông", "Sảnh lễ tân"],
                 nv: "Trương Khắc Mai", sdt: "0982008777", region: "Trung",
                 hinhAnh: [
@@ -233,6 +239,7 @@
             },
             { 
                 tinh: "Gia Lai", ten: "Tòa nhà Viettel Gia Lai", diaChi: "Số 89 Nguyễn Tất Thành, Pleiku, Gia Lai",
+                linkMaps: "https://maps.google.com/?q=89+Nguyễn+Tất+Thành,+Pleiku,+Gia+Lai",
                 trong: "50m2 - 200m2", tienIch: ["Trục đường chính", "PCCC tiêu chuẩn", "Điện nước ổn định", "Khu dân cư đông"],
                 nv: "Hoàng Kim Bốn", sdt: "0969313578", region: "Trung",
                 hinhAnh: [
@@ -244,6 +251,7 @@
             },
             { 
                 tinh: "Phú Yên", ten: "Tòa nhà Viettel Phú Yên", diaChi: "Số 01 Đường Hùng Vương, Tuy Hòa, Phú Yên",
+                linkMaps: "https://maps.google.com/?q=01+Hùng+Vương,+Tuy+Hòa,+Phú+Yên",
                 trong: ["Tầng 1: 121 m2","Tầng 2: 320 m2", "Tầng 4: 385 m2", "Tầng 5: 398 m2"], 
                 tienIch: ["Trục đường chính", "PCCC tiêu chuẩn", "Điện nước ổn định", "Khu dân cư đông"],
                 nv: "Nguyễn Văn Hiếu", sdt: "0967908068", region: "Trung",
@@ -259,6 +267,7 @@
             },
             { 
                 tinh: "Kon Tum", ten: "Tòa nhà Viettel Kontum", diaChi: "Số 1075 Phan Đình Phùng, Tp Kon Tum",
+                linkMaps: "https://maps.google.com/?q=1075+Phan+Đình+Phùng,+Kon+Tum",
                 trong: ["Tầng 1: 60 m2","Tầng 3: 280 m2", "Tầng 4: 289 m2"], 
                 tienIch: ["Trục đường chính", "PCCC tiêu chuẩn", "Điện nước ổn định", "Khu dân cư đông"],
                 nv: "Phạm Thái Sơn", sdt: "0336224108", region: "Trung",
@@ -297,8 +306,12 @@
                             <div class="thumb-overlay">${thumbsHtml}</div>
                         </div>
                         <div class="p-6 flex-1 flex flex-col">
-                            <h3 class="text-xl font-black text-gray-800 mb-1 leading-tight">${b.ten}</h3>
-                            <p class="text-[11px] text-gray-500 mb-3 italic"><i class="fa-solid fa-map-pin text-vt-red mr-1"></i>${b.diaChi}</p>
+                            <a href="${b.linkMaps}" target="_blank" class="hover:text-vt-red transition-colors">
+                                <h3 class="text-xl font-black text-gray-800 mb-1 leading-tight">${b.ten}</h3>
+                            </a>
+                            <a href="${b.linkMaps}" target="_blank" class="text-[11px] text-gray-500 mb-3 italic hover:underline">
+                                <i class="fa-solid fa-map-pin text-vt-red mr-1"></i>${b.diaChi}
+                            </a>
                             <div class="flex flex-wrap gap-1 mb-4">
                                 ${b.tienIch.map(t => `<span class="bg-gray-100 text-gray-600 text-[9px] px-2 py-0.5 rounded-md font-bold">#${t}</span>`).join('')}
                             </div>
@@ -307,13 +320,16 @@
                                 <div class="font-black text-gray-900 text-sm">${trongHtml}</div>
                             </div>
                             <div class="mt-auto">
-                                <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-xl mb-6">
+                                <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-xl mb-4">
                                     <div class="bg-vt-red text-white w-10 h-10 rounded-full flex items-center justify-center shadow-md"><i class="fa-solid fa-user-tie"></i></div>
                                     <div><p class="text-xs font-bold text-gray-800">${b.nv}</p><p class="text-sm font-black text-vt-red">${b.sdt}</p></div>
                                 </div>
-                                <div class="grid grid-cols-2 gap-3">
-                                    <a href="tel:${b.sdt}" class="bg-vt-red text-white text-center py-3.5 rounded-xl font-black text-xs hover:bg-red-700 transition-all">GỌI NGAY</a>
-                                    <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-600 text-white text-center py-3.5 rounded-xl font-black text-xs hover:bg-blue-700 transition-all">ZALO</a>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <a href="tel:${b.sdt}" class="bg-vt-red text-white text-center py-3 rounded-xl font-black text-[11px] hover:bg-red-700 transition-all">GỌI NGAY</a>
+                                    <a href="https://zalo.me/${b.sdt}" target="_blank" class="bg-blue-600 text-white text-center py-3 rounded-xl font-black text-[11px] hover:bg-blue-700 transition-all">ZALO</a>
+                                    <a href="${b.linkMaps}" target="_blank" class="bg-emerald-600 text-white text-center py-3 rounded-xl font-black text-[11px] hover:bg-emerald-700 transition-all flex items-center justify-center gap-1">
+                                        <i class="fa-solid fa-location-arrow text-[10px]"></i> BẢN ĐỒ
+                                    </a>
                                 </div>
                             </div>
                         </div>
